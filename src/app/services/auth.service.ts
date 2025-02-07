@@ -1,10 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  constructor(private http: HttpClient) {}
+
   private tokenKey = 'spotify_auth';
+
+  private apiUrl = 'http://localhost:3000/auth';
+
+  public getLoginUrl() {
+    return this.http.get<{ url: string }>(`${this.apiUrl}/login`);
+  }
 
   // Guardar el token en LocalStorage
   setToken(token: string): void {

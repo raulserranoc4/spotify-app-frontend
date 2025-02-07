@@ -1,4 +1,4 @@
-<mat-grid-list [cols]="2" rowHeight="100px" class="header">
+<mat-grid-list [cols]="3" rowHeight="100px" class="header">
   <mat-grid-tile class="spotify-title">Spotify App 1</mat-grid-tile>
   <mat-grid-tile
     ><img
@@ -7,4 +7,10 @@
       width="50"
     />
   </mat-grid-tile>
+  <mat-grid-tile
+    ><button class="logout-button" (click)="logout()">
+      <mat-icon>cancel</mat-icon>
+      <span>Salir</span>
+    </button></mat-grid-tile
+  >
 </mat-grid-list>

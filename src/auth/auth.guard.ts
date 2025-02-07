@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { AuthService } from '../app/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private router: Router) {}
 
   canActivate(): boolean {
-    if (this.authService.isAuthenticated()) {
-      return true;
-    } else {
-      this.router.navigate(['/']); // Redirigir si no está autenticado
+    const token = localStorage.getItem('spotify_token');
+
+    if (!token) {
+      this.router.navigate(['/login']); // 👈 Si no hay token, redirigir al login
       return false;
     }
+    return true;
   }
 }
