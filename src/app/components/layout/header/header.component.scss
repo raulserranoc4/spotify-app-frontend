@@ -1,0 +1,49 @@
+.header {
+  background: linear-gradient(-45deg, #1db954, #1ed760, black);
+  background-size: 300% 300%;
+  animation: gradientMove 5s infinite alternate;
+  width: 100%;
+  height: 10%;
+}
+
+.header-tile {
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 0 5px #00ffea, 0 0 10px #00ffea, 0 0 20px #00ffea,
+    0 0 40px #00ffea;
+  background: linear-gradient(90deg, #00ffea, #00c3ff, #0078ff);
+  padding: 10px;
+  border-radius: 10px;
+}
+.title-3d {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 4px 4px 0px #ff00ff, 8px 8px 0px #00ffff, 12px 12px 0px #ffcc00;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap");
+
+.spotify-title {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  letter-spacing: -0.5px;
+  color: #1db954;
+  text-align: center;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.spotify-title {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  color: #1db954;
+  text-align: center;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
