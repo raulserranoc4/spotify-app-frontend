@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -52,5 +53,22 @@ export class AuthService {
       this.clearToken();
       return false;
     }
+  }
+
+  public logout() {
+    localStorage.removeItem('spotify_token');
+
+    window.open(
+      'https://accounts.spotify.com/logout',
+      '_blank',
+      'width=500,height=500'
+    );
+  }
+
+  private userImageSource = new BehaviorSubject<string | null>(null);
+  userImage$ = this.userImageSource.asObservable();
+
+  setUserImage(imageUrl: string) {
+    this.userImageSource.next(imageUrl);
   }
 }

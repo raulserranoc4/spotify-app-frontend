@@ -1,0 +1,49 @@
+<div class="file-uploader">
+  <p class="info-text">
+    Para poder subir el archivo, primero debes solicitar los datos en este
+    <a href="#" class="info-link" target="_blank">enlace</a>.
+  </p>
+
+  <input
+    type="file"
+    (change)="onFileSelected($event)"
+    id="fileInput"
+    hidden
+    accept=".zip"
+  />
+
+  <label for="fileInput" class="upload-btn">📁 Seleccionar Archivo</label>
+
+  <p *ngIf="selectedFile">Archivo seleccionado: {{ selectedFile.name }}</p>
+
+  <button class="upload-btn submit-btn" (click)="uploadFile()">
+    🚀 Enviar Archivo
+  </button>
+
+  <div class="spotify-data-info">
+    <h2>📥 Cómo descargar tus datos de Spotify</h2>
+    <ol>
+      <li>
+        Inicia sesión en Spotify desde un navegador en
+        <a
+          class="info-link"
+          href="https://www.spotify.com/account/privacy"
+          target="_blank"
+          >este enlace</a
+        >.
+      </li>
+      <li>
+        Desplázate hacia abajo hasta la sección
+        <strong>"Descarga tus datos"</strong>.
+      </li>
+      <li>
+        Solicita tu información, seleccionando el tipo de datos que quieres
+        (historial de reproducción, datos de cuenta, etc.).
+      </li>
+      <li>
+        Spotify te enviará un correo electrónico con un enlace para descargar
+        tus datos una vez estén listos (puede tardar hasta 30 días).
+      </li>
+    </ol>
+  </div>
+</div>

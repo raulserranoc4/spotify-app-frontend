@@ -1,0 +1,114 @@
+// .track-container {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: auto;
+//   padding: 20px;
+//   background: linear-gradient(to right, #121212, #1e1e1e);
+//   gap: 20px; /* Espaciado entre las dos tarjetas */
+//   flex-wrap: wrap;
+// }
+
+.profile-wrapper {
+  padding-top: 20px;
+  display: flex;
+  gap: 20px; /* Espaciado entre las dos tarjetas */
+  flex-wrap: wrap; /* Hace que sean responsivas */
+  justify-content: center; /* Centra los elementos */
+  background: linear-gradient(to right, #121212, #1e1e1e);
+}
+
+mat-card {
+  max-width: 500px;
+  width: 100%;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+mat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 12px 30px rgba(0, 255, 127, 0.2); /* Glow verde sutil */
+}
+
+/* Contenedor flex para organizar imagen + detalles */
+.track-info {
+  display: flex;
+  align-items: center; /* Alinea la imagen con el texto */
+  gap: 15px; /* Espacio entre imagen y texto */
+}
+
+.track-item {
+  margin-bottom: 10px;
+}
+
+/* Estilo de la imagen */
+.track-image {
+  width: auto;
+  max-width: 150px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor del título y artista en columna */
+.track-details {
+  display: flex;
+  flex-direction: column; /* ✅ Fuerza que el título y el artista se coloquen debajo */
+  justify-content: center;
+}
+
+/* Efecto hover en cada canción */
+.track-item:hover {
+  background: rgba(29, 185, 84, 0.2); /* Fondo verde semi-transparente */
+  border-radius: 8px;
+  transform: scale(1.02); /* Pequeño zoom */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Efecto hover en la imagen */
+.track-item:hover .track-image {
+  box-shadow: 0px 0px 15px rgba(29, 185, 84, 0.5); /* Glow verde */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Cambio de color en el título y subtítulo al hacer hover */
+.track-item:hover .track-details mat-card-title {
+  color: #ffffff; /* Blanco para destacar */
+}
+
+.track-item:hover .track-details mat-card-subtitle {
+  color: #1db954; /* Verde Spotify */
+}
+
+/* Estilos para mejorar la legibilidad */
+mat-card-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1db954; /* Verde Spotify */
+}
+
+mat-card-subtitle {
+  font-size: 1rem;
+  color: #b3b3b3;
+}
+
+@media (max-width: 768px) {
+  .track-image {
+    max-width: 100px;
+  }
+}
+
+/* 📌 Responsivo para pantallas pequeñas */
+@media (max-width: 500px) {
+}
+
+@media (max-width: 480px) {
+  .track-image {
+    max-width: 80px;
+  }
+}

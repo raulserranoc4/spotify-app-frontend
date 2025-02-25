@@ -1,0 +1,30 @@
+<div *ngIf="userProfile" class="profile-container">
+  <div>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ userProfile.display_name }}</mat-card-title>
+        <mat-card-subtitle>{{ userProfile.email }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        [src]="userProfile.images?.[0]?.url || 'assets/default-profile.png'"
+        alt="Foto de perfil"
+      />
+      <mat-card-content>
+        <a
+          [href]="userProfile.external_urls.spotify"
+          class="link-profile"
+          target="_blank"
+          ><p>
+            <strong
+              >Perfil Spotify:
+              <mat-icon>switch_access_shortcut</mat-icon></strong
+            >
+          </p></a
+        >
+        <p><strong>País:</strong> {{ userProfile.country }}</p>
+        <p><strong>Tipo de cuenta:</strong> {{ userProfile.product }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

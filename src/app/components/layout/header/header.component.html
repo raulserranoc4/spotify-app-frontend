@@ -1,16 +1,15 @@
 <mat-grid-list [cols]="3" rowHeight="100px" class="header">
-  <mat-grid-tile class="spotify-title">Spotify App 1</mat-grid-tile>
-  <mat-grid-tile
-    ><img
-      src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg"
-      alt="Spotify Logo"
-      width="50"
-    />
-  </mat-grid-tile>
+  <mat-grid-tile class="spotify-title">Wrappify</mat-grid-tile>
+  <mat-grid-tile> </mat-grid-tile>
   <mat-grid-tile
     ><button class="logout-button" (click)="logout()">
       <mat-icon>cancel</mat-icon>
-      <span>Salir</span>
-    </button></mat-grid-tile
-  >
+      <span>Salir</span></button
+    ><img
+      *ngIf="userImage"
+      class="user-avatar"
+      [src]="userImage"
+      alt="Spotify Logo"
+      width="50"
+  /></mat-grid-tile>
 </mat-grid-list>
