@@ -1,6 +1,31 @@
 <div class="login-container">
-  <h1>Bienvenido a la App</h1>
-  <button mat-raised-button color="primary" (click)="loginWithSpotify()">
-    Iniciar sesión con Spotify
-  </button>
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>
+        🎵 Bienvenido a <span class="app-name">MusicApp</span>
+      </mat-card-title>
+      <mat-card-subtitle>
+        Conéctate y descubre tu mundo musical.
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>
+        Explora tus playlists, estadísticas y recomendaciones personalizadas al
+        iniciar sesión con tu cuenta de Spotify.
+      </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <div class="spotify-login-btn-div">
+        <label
+          (click)="loginWithSpotify()"
+          for="fileInput"
+          class="spotify-login-btn"
+        >
+          Iniciar sesión con Spotify</label
+        >
+      </div>
+    </mat-card-actions>
+  </mat-card>
 </div>

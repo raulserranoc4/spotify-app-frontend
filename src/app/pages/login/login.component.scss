@@ -1,9 +1,117 @@
+/* 🟢 Contenedor principal centrado completamente */
 .login-container {
-  text-align: center;
-  margin-top: 100px;
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100vh; /* Ocupa toda la pantalla */
+  // width: 100%;
+  background: linear-gradient(-45deg, #1db954, #191414, #1db954, #121212);
+  background-size: 300% 300%;
+  animation: gradientBG 6s ease infinite;
+  padding: 20px;
+  // margin-top: 80px;
 }
 
-button {
-  font-size: 16px;
+.spotify-login-btn {
+  background-color: #1db954;
+  color: white;
   padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  font-size: 1rem;
+  border: none;
+}
+
+/* 🌟 Efecto hover en el botón */
+.spotify-login-btn:hover {
+  background: linear-gradient(to right, #1ed760, #1db954);
+  transform: scale(1.05);
+  box-shadow: 0px 6px 20px rgba(29, 185, 84, 0.6);
+}
+
+/* 🎨 Animación del fondo */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 📌 Tarjeta de login centrada */
+.login-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido dentro de la tarjeta */
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0px 10px 30px rgba(0, 255, 127, 0.25);
+  width: 100%;
+  max-width: 450px;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ✨ Efecto hover */
+.login-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 15px 35px rgba(0, 255, 127, 0.4);
+}
+
+/* 🔥 Títulos centrados */
+mat-card-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1db954;
+  margin-bottom: 10px;
+}
+
+.app-name {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* 📌 Subtítulo más sutil y centrado */
+mat-card-subtitle {
+  font-size: 1rem;
+  color: #b3b3b3;
+  margin-bottom: 15px;
+}
+
+/* 📝 Descripción */
+mat-card-content p {
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* 🎼 Icono de Spotify dentro del botón */
+.spotify-icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 12px;
+}
+
+/* 📱 Responsividad */
+@media (max-width: 500px) {
+  .login-card {
+    padding: 30px;
+  }
+
+  .spotify-login-btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
 }

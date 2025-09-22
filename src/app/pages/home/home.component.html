@@ -1,18 +1,9 @@
-<div *ngIf="userProfile" class="profile-container">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{ userProfile.display_name }}</mat-card-title>
-      <mat-card-subtitle>{{ userProfile.email }}</mat-card-subtitle>
-    </mat-card-header>
-    <img
-      mat-card-image
-      [src]="userProfile.images?.[0]?.url || 'assets/default-profile.png'"
-      alt="Foto de perfil"
-    />
-    <mat-card-content>
-      <p><strong>ID:</strong> {{ userProfile.id }}</p>
-      <p><strong>País:</strong> {{ userProfile.country }}</p>
-      <p><strong>Tipo de cuenta:</strong> {{ userProfile.product }}</p>
-    </mat-card-content>
-  </mat-card>
+<div>
+  <mat-tab-group>
+    <mat-tab label="Perfil"> <app-profile></app-profile> </mat-tab>
+    <mat-tab label="Canciones">
+      <app-artist-search></app-artist-search>
+    </mat-tab>
+    <mat-tab label="Prime"> <app-file-uploader></app-file-uploader> </mat-tab>
+  </mat-tab-group>
 </div>

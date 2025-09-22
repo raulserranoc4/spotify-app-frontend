@@ -42,3 +42,12 @@
     border-radius: 4px;
   }
 }
+
+.user-avatar {
+  width: 50px; /* Ajusta el tamaño según lo necesites */
+  height: 50px;
+  border-radius: 50%; /* Convierte la imagen en un círculo */
+  object-fit: cover; /* Evita deformaciones */
+  // border: 2px solid #fff; /* Opcional: borde blanco para mejorar visibilidad */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Opcional: sombra suave */
+}

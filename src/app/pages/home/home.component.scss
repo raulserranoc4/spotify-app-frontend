@@ -1,18 +1,63 @@
-.profile-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+mat-tab-group {
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
+  // margin-top: 40px;
+  background: rgb(154, 226, 177); /* Efecto semi-transparente */
+  backdrop-filter: blur(10px); /* Vidrio esmerilado */
+  // padding: 5px;
+  border-radius: 12px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3); /* Sombra elegante */
+  transition: all 0.3s ease-in-out;
 }
 
-mat-card {
-  max-width: 400px;
+/* Estilo de las pestañas */
+.mat-tab-label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #b3b3b3; /* Gris claro */
+  transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.mat-tab-label:hover {
+  color: #1db954; /* Verde Spotify */
+  transform: scale(1.1);
+}
+
+/* Pestaña activa */
+.mat-tab-label-active {
+  color: #1db954 !important; /* Verde Spotify */
+  font-weight: bold;
+}
+
+/* Barra inferior animada */
+.mat-ink-bar {
+  background-color: #1db954 !important; /* Verde Spotify */
+  height: 3px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Contenido dentro de la pestaña */
+.mat-tab-body {
   padding: 20px;
-  text-align: center;
+  color: white;
+  font-size: 1rem;
 }
 
-mat-card-image {
-  border-radius: 50%;
-  max-width: 150px;
-  margin: 0 auto;
+/* Fondo del contenido */
+.mat-tab-body-content {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Mejoras responsivas */
+@media (max-width: 768px) {
+  mat-tab-group {
+    max-width: 90%;
+  }
+  .mat-tab-label {
+    font-size: 0.9rem;
+  }
 }
