@@ -1,21 +1,14 @@
-// .track-container {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   height: auto;
-//   padding: 20px;
-//   background: linear-gradient(to right, #121212, #1e1e1e);
-//   gap: 20px; /* Espaciado entre las dos tarjetas */
-//   flex-wrap: wrap;
-// }
+.track-container {
+  height: 100%;
+  background: linear-gradient(to right, #121212, #1e1e1e);
+}
 
 .profile-wrapper {
-  padding-top: 20px;
+  padding-top: 2%;
   display: flex;
-  gap: 20px; /* Espaciado entre las dos tarjetas */
-  flex-wrap: wrap; /* Hace que sean responsivas */
-  justify-content: center; /* Centra los elementos */
-  background: linear-gradient(to right, #121212, #1e1e1e);
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 mat-card {
@@ -95,6 +88,27 @@ mat-card-title {
 mat-card-subtitle {
   font-size: 1rem;
   color: #b3b3b3;
+}
+
+.btn-container {
+  padding-top: 2%;
+  padding-bottom: 10vh;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.btn-download-image {
+  padding: 2vh 5vw;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  font-size: 1rem;
+  border: none;
+  margin-bottom: 15px;
+  background: #1db954;
+  color: white;
+  font-weight: bold;
 }
 
 @media (max-width: 768px) {

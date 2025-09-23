@@ -3,8 +3,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  height: 100vh;
+  padding-top: 3%;
+  padding-bottom: 40vh;
+  height: auto;
   background: linear-gradient(to right, #121212, #1e1e1e);
   border-radius: 12px;
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.3);
@@ -31,13 +32,14 @@
 .upload-btn {
   background: rgba(0, 0, 0, 0.75);
   color: white;
-  padding: 10px 20px;
+  padding: 2vh 5vw;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
   font-size: 1rem;
   margin-top: 10px;
   border: none;
+  margin-bottom: 15px;
 }
 
 .upload-btn:hover {

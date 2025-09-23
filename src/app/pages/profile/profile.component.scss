@@ -2,13 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: auto;
   background: linear-gradient(
     to right,
     #121212,
     #1e1e1e
   ); /* Fondo oscuro sutil */
-  padding: 20px;
+  // padding: 20px;
+  padding-top: 2%;
+  padding-bottom: 20vh;
 }
 
 .link-profile {
