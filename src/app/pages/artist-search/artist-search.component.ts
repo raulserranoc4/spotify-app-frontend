@@ -36,19 +36,18 @@ export class ArtistSearchComponent implements OnInit {
   public obtainImage() {
     // this.showTemplates()
     this.downloadImageWithText(
-      // '../../../../assets/templates/white_ticket.png',
-      '/assets/templates/white_ticket.png',
-      `Hola ${this.topTracksLastWeek[0].name}!`, // aquí puedes usar variables dinámicas
-      "50px 'Times New Roman'",
-      'yellow'
+      'templates/white_ticket.png',
+      this.topTracksLastWeek, // aquí puedes usar variables dinámicas
+      'black',
+      true
     );
   }
 
   downloadImageWithText(
     backgroundUrl: string, // ruta o base64 de la imagen
-    text: string, // el texto que quieres poner
-    font: string = '40px Arial', // fuente y tamaño
-    textColor: string = 'white' // color del texto
+    tracks: any[], // el texto que quieres poner
+    textColor: string = 'white', // color del texto
+    lastWeek: boolean
   ) {
     const img = new Image();
     img.crossOrigin = 'anonymous'; // para evitar problemas con CORS si la imagen está en otro servidor
@@ -69,13 +68,28 @@ export class ArtistSearchComponent implements OnInit {
       ctx.drawImage(img, 0, 0);
 
       // Configurar estilo del texto
-      ctx.font = font;
+      ctx.font = "70px 'Courier New', monospace";
       ctx.fillStyle = textColor;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
       // Dibujar el texto (centrado en la imagen)
-      ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+      ctx.fillText('Wrappify', canvas.width / 2, canvas.height / 6);
+
+      ctx.font = "40px 'Courier New', monospace";
+
+      if (lastWeek) {
+        ctx.fillText('LAST WEEK', canvas.width / 2, canvas.height / 4.5);
+      } else {
+        ctx.fillText('LAST MONTH', canvas.width / 2, canvas.height / 5);
+      }
+
+      ctx.font = "30px 'Courier New', monospace";
+
+      for (let [index, track] of tracks.entries()) {
+        const trackHeight = (canvas.height * (index / 1.5 + 6)) / 20;
+        ctx.fillText(track.name, canvas.width / 2, trackHeight);
+      }
 
       // Crear link para descargar la imagen
       const link = document.createElement('a');
