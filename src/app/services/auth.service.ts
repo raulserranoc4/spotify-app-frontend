@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ export class AuthService {
 
   private tokenKey = 'spotify_auth';
 
-  private apiUrl = 'http://localhost:3000/auth';
+  private apiUrl = 'http://localhost:3000/spotify-auth';
 
   public getLoginUrl() {
     return this.http.get<{ url: string }>(`${this.apiUrl}/login`);
@@ -23,7 +23,6 @@ export class AuthService {
 
   // Obtener el token del LocalStorage
   getToken(): string | null {
-    console.log('hola', localStorage.getItem(this.tokenKey));
     return localStorage.getItem(this.tokenKey);
   }
 
@@ -62,6 +61,12 @@ export class AuthService {
       'https://accounts.spotify.com/logout',
       '_blank',
       'width=500,height=500'
+    );
+  }
+
+  public callback(code: string): Observable<any> {
+    return this.http.get<{ access_token: string }>(
+      `${this.apiUrl}/callback?code=${code}`
     );
   }
 

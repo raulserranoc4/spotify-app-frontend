@@ -1,4 +1,4 @@
-.file-uploader {
+.record-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,11 +6,35 @@
   padding-top: 3%;
   padding-bottom: 40vh;
   height: auto;
-  background: linear-gradient(to right, #121212, #1e1e1e);
+  background: #1e1e1e;
   border-radius: 12px;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.3);
   text-align: center;
   color: white;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.record-container-analyzed {
+  display: flex;
+  align-items: center;
+  padding-top: 3%;
+  height: auto;
+  background: #1e1e1e;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.profile-wrapper {
+  padding-top: 2%;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .info-text {
@@ -85,4 +109,247 @@ p {
   font-size: 1rem;
   margin-bottom: 5px;
   color: #b3b3b3;
+}
+
+mat-card {
+  // max-width: 700px;
+  width: 80%;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+mat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 12px 30px rgba(0, 255, 127, 0.2); /* Glow verde sutil */
+}
+
+mat-card-title {
+  color: #1db954;
+  font-weight: bold;
+}
+
+.card-title {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.card-title:hover .track-details mat-card-title {
+  color: #ffffff; /* Blanco para destacar */
+}
+
+.track-item:hover .track-details mat-card-subtitle {
+  color: #1db954; /* Verde Spotify */
+}
+
+.track-sub-details{
+  font-size: 1rem;
+  color: #b3b3b3;
+}
+
+.circle-picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.artist-card-title{
+  width: 100%;
+}
+
+::ng-deep.mat-mdc-card-header-text{
+  width: 100%;
+}
+
+.artist-line {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.artist-line:hover .firt-artist {
+  color: #ffffff;
+}
+
+.firt-artist {
+  color: #1db954;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: left;
+}
+
+.artist-name {
+  color: #1db954;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+// -----------------------------------------------
+
+.profile-wrapper {
+  padding-top: 2%;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.track-info {
+  display: flex;
+  align-items: center; /* Alinea la imagen con el texto */
+  gap: 15px; /* Espacio entre imagen y texto */
+}
+
+/* Estilo de la imagen */
+.track-image {
+  width: auto;
+  max-width: 150px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto hover en cada canción */
+.track-item:hover {
+  background: rgba(29, 185, 84, 0.2); /* Fondo verde semi-transparente */
+  border-radius: 8px;
+  transform: scale(1.02); /* Pequeño zoom */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Efecto hover en la imagen */
+.track-item:hover .track-image {
+  box-shadow: 0px 0px 15px rgba(29, 185, 84, 0.5); /* Glow verde */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Cambio de color en el título y subtítulo al hacer hover */
+.track-item:hover .track-details mat-card-title {
+  color: #ffffff; /* Blanco para destacar */
+}
+
+.track-item:hover .track-details mat-card-subtitle {
+  color: #1db954; /* Verde Spotify */
+}
+
+.back-btn {
+  width: 100%;
+}
+
+.histogram-container {
+  width: 40%;
+  align-items: center
+}
+
+.container-charts {
+  display: flex;
+  width: 100%;
+  align-items: center
+}
+
+/* Pantallas grandes → en fila */
+@media (min-width: 768px) {
+  .container-charts {
+    flex-direction: row;
+  }
+  .histogram-container {
+    width: 100%;
+  }
+}
+
+/* Pantallas pequeñas → uno debajo de otro */
+@media (max-width: 767px) {
+  .container-charts {
+    flex-direction: column;
+  }
+  .histogram-container {
+    width: 100%;
+  }
+}
+
+.artist-selector-container {
+  width: 100%;
+}
+
+.artist-selector-btn {
+  // width: 10%;
+  margin-left: 20px;
+}
+
+::ng-deep .mdc-notched-outline{
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.mi-form-field{
+  width:40%;
+}
+
+.mat-label{
+  color:white;
+}
+
+.input-selector{
+  color:#1db954 !important;
+}
+
+::ng-deep .mdc-text-field__input{
+  caret-color:#1db954 !important;
+}
+
+::ng-deep .mat-mdc-select-arrow {
+  color:#1db954
+}
+
+::ng-deep .mat-mdc-form-field.mat-focused .mat-mdc-select-arrow {
+  color:#1db954 !important;
+  border-color:#1db954 !important;
+}
+
+::ng-deep  .mat-mdc-notch-piece{
+  border-color:#1db954 !important;
+}
+
+::ng-deep .mat-mdc-autocomplete-panel {
+  color:#1db954 !important;
+  background-color: #121212 !important;
+  scrollbar-color: #1db954 #121212;
+}
+
+::ng-deep .mdc-list-item--selected{
+  background-color: #1db954 !important;
+  color:#121212 !important;
+}
+
+::ng-deep .mdc-list-item:hover .mdc-list-item__primary-text{
+ color:#168f3f
+}
+
+::ng-deep .mat-mdc-option .mdc-list-item__primary-text{
+  color:#1db954 ;
+}
+
+.artist-item{
+  color:#1db954 ;
+  font-size: 1.2rem;
+}
+
+.artist-circle-picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.artist-title {
+  color: #1db954;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: left;
+  width: 90%;
 }

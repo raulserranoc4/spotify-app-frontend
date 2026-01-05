@@ -1,19 +1,36 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
+import { ApiService } from '../app/services/api.service';
+import { catchError, map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private readonly apiService: ApiService
+  ) {}
 
-  canActivate(): boolean {
+  canActivate(): Observable<boolean> {
     const token = localStorage.getItem('spotify_token');
+    console.log('holaToken: ', token);
 
     if (!token) {
-      this.router.navigate(['/login']); // 👈 Si no hay token, redirigir al login
-      return false;
+      this.router.navigate(['/login']);
+      return of(false); // devuelve un observable que emite "false"
     }
-    return true;
+
+    return this.apiService.getProfile().pipe(
+      map((profile) => {
+        console.log('Perfil obtenido:', profile);
+        return true; // si se obtiene el perfil, permite el acceso
+      }),
+      catchError((err) => {
+        console.error('Error obteniendo perfil:', err);
+        this.router.navigate(['/login']);
+        return of(false); // en caso de error, bloquea y redirige
+      })
+    );
   }
 }

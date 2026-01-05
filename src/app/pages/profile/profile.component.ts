@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
           'https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg';
         this.authService.setUserImage(userImage);
 
-        console.log('hola', this.userProfile);
+        console.log('Profile: ', this.userProfile);
       },
       (error) => this.handleError(error)
     );

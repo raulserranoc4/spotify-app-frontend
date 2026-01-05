@@ -27,7 +27,6 @@ export class HeaderComponent {
 
   ngOnInit() {
     this.authService.userImage$.subscribe((image) => {
-      console.log('hola');
       this.userImage = image;
     });
   }

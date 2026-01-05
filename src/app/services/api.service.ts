@@ -6,15 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:3000'; // Conectar con el backend
+  private apiUrl = 'http://localhost:3000';
+  private spotifyApiUrl = 'http://localhost:3000/spotify';
+  private recordAnalysisApiUrl = 'http://localhost:3000/record-analysis';
 
   constructor(private http: HttpClient) {}
 
   public getMessage(): Observable<{ text: string }> {
     return this.http.get<{ text: string }>(`${this.apiUrl}/message`);
   }
-
-  private spotifyApiUrl = 'http://localhost:3000/spotify';
 
   public getProfile() {
     const token = localStorage.getItem('spotify_token');
@@ -65,6 +65,16 @@ export class ApiService {
   }
 
   public sendFile(formData: FormData): Observable<any> {
-    return this.http.post(`${this.spotifyApiUrl}/upload`, formData);
+    const token = localStorage.getItem('spotify_token');
+    return this.http.post(`${this.recordAnalysisApiUrl}/upload`, formData, {
+      headers: new HttpHeaders({ Authorization: `${token}` }),
+    });
+  }
+
+  public analyzeArtist(formData: FormData): Observable<any> {
+    const token = localStorage.getItem('spotify_token');
+    return this.http.post(`${this.recordAnalysisApiUrl}/analyze-artist`, formData, {
+      headers: new HttpHeaders({ Authorization: `${token}` }),
+    });
   }
 }
