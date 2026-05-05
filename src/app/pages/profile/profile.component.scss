@@ -1,16 +1,15 @@
 .profile-container {
   display: flex;
+  align-items: flex-start;
   justify-content: center;
-  align-items: center;
-  height: auto;
-  background: linear-gradient(
-    to right,
-    #121212,
-    #1e1e1e
-  ); /* Fondo oscuro sutil */
-  // padding: 20px;
-  padding-top: 2%;
-  padding-bottom: 20vh;
+  min-height: calc(100dvh - 120px);
+  padding: clamp(20px, 5vw, 40px);
+  color: white;
+  background: linear-gradient(to right, #121212, #1e1e1e);
+}
+
+.profile-container > div {
+  width: min(100%, 460px);
 }
 
 .link-profile {
@@ -19,20 +18,18 @@
 }
 
 mat-card {
-  max-width: 420px;
   width: 100%;
-  padding: 25px;
+  padding: clamp(16px, 4vw, 28px);
   text-align: center;
-  background: rgba(0, 0, 0, 0.75); /* Fondo oscuro translúcido */
-  backdrop-filter: blur(10px); /* Efecto de desenfoque */
+  background: rgba(0, 0, 0, 0.75);
   border-radius: 15px;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.3); /* Sombra elegante */
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease-in-out;
 }
 
 mat-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0px 12px 30px rgba(0, 255, 127, 0.2); /* Glow verde sutil */
+  box-shadow: 0px 12px 30px rgba(0, 255, 127, 0.2);
 }
 
 mat-card-header {
@@ -42,47 +39,52 @@ mat-card-header {
 }
 
 mat-card-title {
-  font-size: 1.6rem;
+  max-width: 100%;
+  color: #1db954;
+  font-size: clamp(1.35rem, 7vw, 1.8rem);
   font-weight: bold;
-  color: #1db954; /* Verde Spotify */
+  line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 mat-card-subtitle {
-  font-size: 1rem;
-  color: #b3b3b3; /* Gris claro */
+  max-width: 100%;
+  color: #b3b3b3;
+  font-size: clamp(0.95rem, 4vw, 1.1rem);
+  overflow-wrap: anywhere;
 }
 
 mat-card-image {
+  width: clamp(110px, 32vw, 150px);
+  height: clamp(110px, 32vw, 150px);
+  margin: 20px auto;
+  border: 4px solid rgba(29, 185, 84, 0.5);
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
   object-fit: cover;
-  margin: 15px auto;
-  border: 4px solid rgba(29, 185, 84, 0.5); /* Borde verde */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 mat-card-image:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 0px 15px rgba(29, 185, 84, 0.7); /* Glow verde */
+  transform: scale(1.05);
+  box-shadow: 0px 0px 15px rgba(29, 185, 84, 0.7);
 }
 
 mat-card-content {
-  color: #e0e0e0; /* Blanco grisáceo */
-  font-size: 1rem;
-  text-align: left;
   margin-top: 10px;
+  color: #e0e0e0;
+  font-size: 1rem;
 }
 
 mat-card-content p {
   margin: 8px 0;
-  padding: 8px;
+  padding: 10px;
+  text-align: center;
+  overflow-wrap: anywhere;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
-  text-align: center;
   transition: background 0.3s ease;
 }
 
 mat-card-content p:hover {
-  background: rgba(29, 185, 84, 0.3); /* Efecto verde sutil */
+  background: rgba(29, 185, 84, 0.3);
 }

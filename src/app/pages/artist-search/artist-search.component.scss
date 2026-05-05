@@ -1,22 +1,21 @@
 .track-container {
-  height: 100%;
+  min-height: calc(100dvh - 120px);
+  padding: clamp(18px, 4vw, 36px);
   background: linear-gradient(to right, #121212, #1e1e1e);
 }
 
 .profile-wrapper {
-  padding-top: 2%;
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 520px));
+  gap: clamp(16px, 3vw, 24px);
   justify-content: center;
 }
 
 mat-card {
-  max-width: 500px;
   width: 100%;
-  padding: 15px;
+  min-width: 0;
+  padding: clamp(14px, 3vw, 20px);
   background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(10px);
   border-radius: 12px;
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease-in-out;
@@ -24,105 +23,120 @@ mat-card {
 
 mat-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0px 12px 30px rgba(0, 255, 127, 0.2); /* Glow verde sutil */
+  box-shadow: 0px 12px 30px rgba(0, 255, 127, 0.2);
 }
 
-/* Contenedor flex para organizar imagen + detalles */
-.track-info {
-  display: flex;
-  align-items: center; /* Alinea la imagen con el texto */
-  gap: 15px; /* Espacio entre imagen y texto */
+mat-card-title {
+  color: #1db954;
+  font-size: clamp(1rem, 4vw, 1.15rem);
+  font-weight: bold;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+mat-card-subtitle {
+  color: #b3b3b3;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+mat-list {
+  display: grid;
+  gap: 8px;
 }
 
 .track-item {
-  margin-bottom: 10px;
+  height: auto !important;
+  min-height: 76px;
+  margin-bottom: 0;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
 }
 
-/* Estilo de la imagen */
+.track-info {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 8px 0;
+}
+
 .track-image {
-  width: auto;
-  max-width: 150px;
-  height: auto;
+  width: 72px;
+  height: 72px;
   border-radius: 8px;
   object-fit: cover;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Contenedor del título y artista en columna */
 .track-details {
+  min-width: 0;
   display: flex;
-  flex-direction: column; /* ✅ Fuerza que el título y el artista se coloquen debajo */
+  flex-direction: column;
   justify-content: center;
 }
 
-/* Efecto hover en cada canción */
 .track-item:hover {
-  background: rgba(29, 185, 84, 0.2); /* Fondo verde semi-transparente */
-  border-radius: 8px;
-  transform: scale(1.02); /* Pequeño zoom */
-  transition: all 0.3s ease-in-out;
+  background: rgba(29, 185, 84, 0.2);
+  transform: translateY(-1px);
 }
 
-/* Efecto hover en la imagen */
 .track-item:hover .track-image {
-  box-shadow: 0px 0px 15px rgba(29, 185, 84, 0.5); /* Glow verde */
-  transition: box-shadow 0.3s ease-in-out;
+  box-shadow: 0px 0px 15px rgba(29, 185, 84, 0.5);
 }
 
-/* Cambio de color en el título y subtítulo al hacer hover */
 .track-item:hover .track-details mat-card-title {
-  color: #ffffff; /* Blanco para destacar */
+  color: #ffffff;
 }
 
 .track-item:hover .track-details mat-card-subtitle {
-  color: #1db954; /* Verde Spotify */
-}
-
-/* Estilos para mejorar la legibilidad */
-mat-card-title {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #1db954; /* Verde Spotify */
-}
-
-mat-card-subtitle {
-  font-size: 1rem;
-  color: #b3b3b3;
+  color: #1db954;
 }
 
 .btn-container {
-  padding-top: 2%;
-  padding-bottom: 10vh;
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
   justify-content: center;
-}
-.btn-download-image {
-  padding: 2vh 5vw;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-  font-size: 1rem;
-  border: none;
-  margin-bottom: 15px;
-  background: #1db954;
-  color: white;
-  font-weight: bold;
+  padding-top: clamp(18px, 4vw, 30px);
 }
 
-@media (max-width: 768px) {
-  .track-image {
-    max-width: 100px;
+.btn-download-image {
+  width: min(100%, 280px);
+  min-height: 48px;
+  padding: 12px 18px;
+  color: white;
+  background: #1db954;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+}
+
+.btn-download-image:hover {
+  background: #168f3f;
+}
+
+@media (max-width: 900px) {
+  .profile-wrapper {
+    grid-template-columns: minmax(0, 560px);
   }
 }
 
-/* 📌 Responsivo para pantallas pequeñas */
-@media (max-width: 500px) {
-}
-
 @media (max-width: 480px) {
+  .track-container {
+    padding-inline: 12px;
+  }
+
+  .track-info {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 10px;
+  }
+
   .track-image {
-    max-width: 80px;
+    width: 58px;
+    height: 58px;
   }
 }

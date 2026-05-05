@@ -13,6 +13,7 @@ export class LoginComponent {
 
   loginWithSpotify() {
     this.authService.getLoginUrl().subscribe((response) => {
+      console.log('hayURL',response.url);
       window.location.href = response.url;
     });
   }

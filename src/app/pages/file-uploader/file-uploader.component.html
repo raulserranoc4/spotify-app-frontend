@@ -1,7 +1,13 @@
 <div *ngIf="isSelectFilePage" class="record-container">
   <p class="info-text">
     Para poder subir el archivo, primero debes solicitar los datos en este
-    <a href="#" class="info-link" target="_blank">enlace</a>.
+    <a
+      href="https://www.spotify.com/account/privacy"
+      class="info-link"
+      target="_blank"
+      rel="noopener"
+      >enlace</a
+    >.
   </p>
 
   <input
@@ -12,119 +18,131 @@
     accept=".zip"
   />
 
-  <label for="fileInput" class="upload-btn">📁 Seleccionar Archivo</label>
+  <label for="fileInput" class="upload-btn">Seleccionar archivo</label>
 
-  <p *ngIf="selectedFile">Archivo seleccionado: {{ selectedFile.name }}</p>
+  <p *ngIf="selectedFile" class="selected-file">
+    Archivo seleccionado: {{ selectedFile.name }}
+  </p>
 
   <button class="upload-btn submit-btn" (click)="uploadFile()">
-    🚀 Analizar Historial
+    Analizar historial
   </button>
 
   <div class="spotify-data-info">
-    <h2>📥 Cómo descargar tus datos de Spotify</h2>
+    <h2>Como descargar tus datos de Spotify</h2>
     <ol>
       <li>
-        Inicia sesión en Spotify desde un navegador en
+        Inicia sesion en Spotify desde un navegador en
         <a
           class="info-link"
           href="https://www.spotify.com/account/privacy"
           target="_blank"
+          rel="noopener"
           >este enlace</a
         >.
       </li>
       <li>
-        Desplázate hacia abajo hasta la sección
+        Desplazate hacia abajo hasta la seccion
         <strong>"Descarga tus datos"</strong>.
       </li>
       <li>
-        Solicita tu información, seleccionando el tipo de datos que quieres
-        (historial de reproducción, datos de cuenta, etc.).
+        Solicita tu informacion seleccionando el tipo de datos que quieres:
+        historial de reproduccion, datos de cuenta, etc.
       </li>
       <li>
-        Spotify te enviará un correo electrónico con un enlace para descargar
-        tus datos una vez estén listos (puede tardar hasta 30 días).
+        Spotify te enviara un correo electronico con un enlace para descargar
+        tus datos una vez esten listos.
       </li>
     </ol>
   </div>
 </div>
-<div *ngIf="!isSelectFilePage" record-container>
+
+<div *ngIf="!isSelectFilePage" class="record-container-analyzed">
   <app-loading *ngIf="!recordInfo"></app-loading>
-  <div *ngIf="recordInfo" class="record-container-analyzed">
+
+  <div *ngIf="recordInfo" class="analysis-content">
     <div class="back-btn">
       <button class="upload-btn submit-btn" (click)="goToUploadFile()">
-        📁 Seleccionar Otro Archivo
+        Seleccionar otro archivo
       </button>
     </div>
 
-    <!-- MOST LISTENED ARTISTS -->
-    <mat-card class="top-tracks-card">
-      <mat-card-header>
-        <mat-card-title class="card-title"
-          >Artistas más escuchados</mat-card-title
-        >
-      </mat-card-header>
-      <mat-card-content>
-        <div class="artist-line">
-          <p class="firt-artist">
-            Tu Artista más escuchado es {{ firstArtist.name }} con un total de
-            <span *ngIf="firstArtist.hours != 0"
-              >{{ firstArtist.time.hours }} horas, </span
-            ><span *ngIf="firstArtist.minutes != 0"
-              >{{ firstArtist.time.minutes }} minutos y </span
-            ><span *ngIf="firstArtist.seconds != 0"
-              >{{ firstArtist.time.seconds }} segundos.</span
-            >
-          </p>
-          <img
-            [src]="firstArtist.images[0].url"
-            alt="Foto Artista"
-            class="circle-picture"
-          />
-        </div>
-        <mat-list>
-          <mat-list-item
-            *ngFor="let artist of artists; let i = index"
-            class="track-item"
-          >
-            <div class="track-info">
-              <div class="track-details">
-                <mat-card-title>
-                  {{ i + 2 }}º {{ artist.artistName }} <span class="track-sub-details">- {{(artist.time / 60).toFixed(0)}} min</span>
-                </mat-card-title>
-                <!-- <mat-card-subtitle>{{ artist.artist }}</mat-card-subtitle> -->
-              </div>
-            </div>
-          </mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
-
-    <!-- MOST LISTENED TRACKS -->
-    <mat-card class="top-tracks-card">
-      <mat-card-header>
-        <mat-card-title class="card-title"
-          >Canciones más escuchadas</mat-card-title
-        >
-      </mat-card-header>
-      <mat-card-content>
-        <div>
-          <div class="artist-line">
-            <p class="firt-artist">
-            Tu Canción más escuchada es {{ firstTrack.name }} con un total de
-            <span *ngIf="firstTrack.hours != 0"
-              >{{ firstTrack.time.hours }} horas, </span
-            ><span *ngIf="firstTrack.minutes != 0"
-              >{{ firstTrack.time.minutes }} minutos y </span
-            ><span *ngIf="firstTrack.seconds != 0"
-              >{{ firstTrack.time.seconds }} segundos.</span
-            >
-          </p>
+    <div class="summary-grid">
+      <mat-card class="top-tracks-card">
+        <mat-card-header>
+          <mat-card-title class="card-title">
+            Artistas mas escuchados
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="artist-line featured-line">
+            <p class="first-artist">
+              Tu artista mas escuchado es {{ firstArtist.name }} con un total
+              de
+              <span *ngIf="firstArtist.time.hours != 0">
+                {{ firstArtist.time.hours }} horas,
+              </span>
+              <span *ngIf="firstArtist.time.minutes != 0">
+                {{ firstArtist.time.minutes }} minutos y
+              </span>
+              <span *ngIf="firstArtist.time.seconds != 0">
+                {{ firstArtist.time.seconds }} segundos.
+              </span>
+            </p>
             <img
-              [src]="firstTrack.album.images[1].url"
-              alt="Foto Artista"
+              [src]="firstArtist.images[0].url"
+              alt="Foto del artista"
               class="circle-picture"
             />
           </div>
+
+          <mat-list>
+            <mat-list-item
+              *ngFor="let artist of artists; let i = index"
+              class="track-item"
+            >
+              <div class="track-info">
+                <div class="track-details">
+                  <mat-card-title>
+                    {{ i + 2 }}. {{ artist.artistName }}
+                    <span class="track-sub-details">
+                      - {{ (artist.time / 60).toFixed(0) }} min
+                    </span>
+                  </mat-card-title>
+                </div>
+              </div>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="top-tracks-card">
+        <mat-card-header>
+          <mat-card-title class="card-title">
+            Canciones mas escuchadas
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="artist-line featured-line">
+            <p class="first-artist">
+              Tu cancion mas escuchada es {{ firstTrack.name }} con un total de
+              <span *ngIf="firstTrack.time.hours != 0">
+                {{ firstTrack.time.hours }} horas,
+              </span>
+              <span *ngIf="firstTrack.time.minutes != 0">
+                {{ firstTrack.time.minutes }} minutos y
+              </span>
+              <span *ngIf="firstTrack.time.seconds != 0">
+                {{ firstTrack.time.seconds }} segundos.
+              </span>
+            </p>
+            <img
+              [src]="firstTrack.album.images[1].url"
+              alt="Foto del album"
+              class="circle-picture"
+            />
+          </div>
+
           <mat-list>
             <mat-list-item
               *ngFor="let track of tracks; let i = index"
@@ -132,76 +150,134 @@
             >
               <div class="track-info">
                 <div class="track-details">
-                  <mat-card-title
-                    >{{ i + 2 }}º {{ track.trackName }} <span class="track-sub-details">- {{(track.time / 60).toFixed(0)}} min</span></mat-card-title>
+                  <mat-card-title>
+                    {{ i + 2 }}. {{ track.trackName }}
+                    <span class="track-sub-details">
+                      - {{ (track.time / 60).toFixed(0) }} min
+                    </span>
+                  </mat-card-title>
                 </div>
               </div>
             </mat-list-item>
           </mat-list>
-        </div>
-      </mat-card-content>
-    </mat-card>
+        </mat-card-content>
+      </mat-card>
+    </div>
 
-    <!-- INFORMACIÓN ARTISTA -->
     <div class="artist-selector-container">
       <mat-form-field appearance="outline" class="mi-form-field">
-        <mat-label class="mat-label">Seleccione un Artista</mat-label>
-        <input type="text" class="input-selector" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-label class="mat-label">Seleccione un artista</mat-label>
+        <input
+          type="text"
+          class="input-selector"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+        />
         <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let artist of filteredOptions | async" [value]="artist.artistName">
+          <mat-option
+            *ngFor="let artist of filteredOptions | async"
+            [value]="artist.artistName"
+          >
             {{ artist.artistName }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-      <button class="upload-btn artist-selector-btn submit-btn" (click)="analyzeArtist()">
+
+      <button
+        class="upload-btn artist-selector-btn submit-btn"
+        (click)="analyzeArtist()"
+      >
         Analizar
       </button>
-      <div *ngIf="isLoadingArtist" class="record-container-analyzed">
-        <mat-card  class="artist-analysis-card">
-          <app-loading ></app-loading>
-        </mat-card>
-      </div>
-      <div *ngIf="artistAnalysis" class="record-container-analyzed">
-        <mat-card  class="artist-analysis-card">
-          <mat-card-header>
-            <mat-card-title>
-              <div class="artist-line">
-                <p class="artist-title">{{ artistAnalysis.artistName }}</p>
-                <img
-                  [src]="artistAnalysis.artistImage"
-                  alt="Foto Artista"
-                  class="artist-circle-picture"
-                />
-              </div>
-            </mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p><strong class="artist-item">Minutos escuchados:</strong> {{ artistAnalysis.minutesListened }}</p>
-            <p><strong class="artist-item">Primer track escuchado:</strong> {{ artistAnalysis.firstTrack }}</p>
-            <p><strong class="artist-item">Primera vez que escuchaste al artista:</strong> {{ artistAnalysis.firstTimeListened }}</p>
-            <div class="histogram-container">
-              <h2>Tiempo Escuchado por Año</h2>
-              <app-histogram [rawData]="artistAnalysis.artistByYears"></app-histogram>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </div>
     </div>
 
-    <!-- CHARTS -->
+    <mat-card *ngIf="isLoadingArtist" class="artist-analysis-card">
+      <app-loading></app-loading>
+    </mat-card>
+
+    <mat-card *ngIf="artistAnalysis" class="artist-analysis-card">
+      <mat-card-header>
+        <mat-card-title class="artist-heading">
+          <span class="artist-title">{{ artistAnalysis.artistName }}</span>
+          <img
+            [src]="artistAnalysis.artistImage"
+            alt="Foto del artista"
+            class="artist-circle-picture"
+          />
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="grid-3">
+          <div class="col">
+            <strong>
+              <span class="span-column">
+                Has escuchado a este artista un total de
+              </span>
+              {{ artistAnalysis.minutesListened }}
+              <span class="span-column"> minutos.</span>
+            </strong>
+          </div>
+          <div class="col">
+            <strong>
+              <span class="span-column">
+                El primer track que escuchaste de este artista es
+              </span>
+              {{ artistAnalysis.firstTrack }}
+            </strong>
+          </div>
+          <div class="col">
+            <strong>
+              <span class="span-column">
+                La primera vez que escuchaste al artista fue
+              </span>
+              {{ artistAnalysis.firstTimeListened }}
+            </strong>
+          </div>
+        </div>
+
+        <div class="artist-container-charts">
+          <div class="artist-chart-container">
+            <h2>Tiempo escuchado por ano</h2>
+            <app-histogram [rawData]="artistAnalysis.artistByYears"></app-histogram>
+          </div>
+          <div class="artist-chart-container">
+            <h2>Tiempo escuchado por ano</h2>
+            <app-histogram [rawData]="artistAnalysis.artistByYears"></app-histogram>
+          </div>
+          <div class="artist-chart-container">
+            <h2>Tiempo escuchado por ano</h2>
+            <app-histogram [rawData]="artistAnalysis.artistByYears"></app-histogram>
+          </div>
+        </div>
+
+        <div class="container-charts">
+          <div class="histogram-container">
+            <h2>Tiempo escuchado por ano</h2>
+            <app-histogram [rawData]="artistAnalysis.artistByYears"></app-histogram>
+          </div>
+          <div class="histogram-container">
+            <h2>Tiempo escuchado por mes</h2>
+            <app-doughnut [rawData]="doughnutMonthData"></app-doughnut>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
     <div class="container-charts">
       <div class="histogram-container">
-        <h2>Tiempo Escuchado por Año</h2>
+        <h2>Tiempo escuchado por ano</h2>
         <app-histogram [rawData]="histogramYearsData"></app-histogram>
       </div>
       <div class="histogram-container">
-        <h2>Tiempo Escuchado por Mes</h2>
+        <h2>Tiempo escuchado por mes</h2>
         <app-doughnut [rawData]="doughnutMonthData"></app-doughnut>
       </div>
     </div>
+
     <div class="back-btn">
       <button class="upload-btn submit-btn" (click)="goToUploadFile()">
-        📁 Seleccionar Otro Archivo
+        Seleccionar otro archivo
       </button>
     </div>
   </div>

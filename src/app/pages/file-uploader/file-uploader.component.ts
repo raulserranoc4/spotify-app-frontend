@@ -98,8 +98,10 @@ export class FileUploaderComponent {
         this.doughnutMonthData = this.recordInfo.monthsInfo;
         this.totalArtists = this.recordInfo.totalArtists;
       },
-      error: (error: HttpErrorResponse) =>
-        console.error('Error al subir el archivo', error),
+      error: (error: HttpErrorResponse) => {
+        console.error('Error al subir el archivo', error);
+        this.isSelectFilePage = true;
+      }
     });
 
     this.isSelectFilePage = false;

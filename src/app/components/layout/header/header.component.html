@@ -1,14 +1,17 @@
-<mat-grid-list [cols]="2" rowHeight="100px" class="header">
-  <mat-grid-tile class="spotify-title">Wrappify</mat-grid-tile>
-  <mat-grid-tile
-    ><button class="logout-button" (click)="logout()">
-      <mat-icon>cancel</mat-icon>
-      <span>Salir</span></button
-    ><img
+<header class="header">
+  <div class="spotify-title">Wrappify</div>
+
+  <div class="header-actions">
+    <button class="logout-button" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Salir</span>
+    </button>
+
+    <img
       *ngIf="userImage"
       class="user-avatar"
       [src]="userImage"
-      alt="Spotify Logo"
-      width="50"
-  /></mat-grid-tile>
-</mat-grid-list>
+      alt="Avatar de usuario"
+    />
+  </div>
+</header>

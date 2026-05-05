@@ -1,29 +1,51 @@
+.home-shell {
+  min-height: calc(100dvh - 72px);
+  background: #121212;
+}
+
 mat-tab-group {
   width: 100%;
   max-width: 100%;
   margin: auto;
   background: #121212;
-  backdrop-filter: blur(10px); /* Vidrio esmerilado */
+  backdrop-filter: blur(10px);
   transition: all 0.3s ease-in-out;
+}
+
+::ng-deep .mat-mdc-tab-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #121212;
+}
+
+::ng-deep .mat-mdc-tab-label-container {
+  overflow-x: auto;
+}
+
+::ng-deep .mat-mdc-tab {
+  min-width: 100px;
+  padding: 0 14px;
 }
 
 ::ng-deep .mat-mdc-tab .mdc-tab__text-label {
   color: white !important;
+  white-space: nowrap;
 }
 
-// Hover
-::ng-deep .mat-mdc-tab:hover .mdc-tab__text-label {
-  color: #1db954 !important;
-}
-
-//Active
-::ng-deep .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
-  color: #1db954 !important;
-}
+::ng-deep .mat-mdc-tab:hover .mdc-tab__text-label,
+::ng-deep .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label,
 ::ng-deep .mat-mdc-tab.mdc-tab--active:focus .mdc-tab__text-label {
   color: #1db954 !important;
 }
 
 ::ng-deep .mat-mdc-tab .mdc-tab-indicator__content--underline {
   border-color: #1db954 !important;
+}
+
+@media (max-width: 480px) {
+  ::ng-deep .mat-mdc-tab {
+    min-width: 88px;
+    padding: 0 10px;
+  }
 }

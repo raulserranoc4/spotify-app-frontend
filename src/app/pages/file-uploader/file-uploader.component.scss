@@ -1,52 +1,53 @@
+.record-container,
+.record-container-analyzed {
+  min-height: calc(100dvh - 120px);
+  padding: clamp(18px, 4vw, 36px);
+  color: white;
+  text-align: center;
+  background: #1e1e1e;
+}
+
 .record-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding-top: 3%;
-  padding-bottom: 40vh;
-  height: auto;
-  background: #1e1e1e;
-  border-radius: 12px;
-  text-align: center;
-  color: white;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 16px;
 }
 
 .record-container-analyzed {
-  display: flex;
-  align-items: center;
-  padding-top: 3%;
-  height: auto;
-  background: #1e1e1e;
-  border-radius: 12px;
-  text-align: center;
-  color: white;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: block;
 }
 
-.profile-wrapper {
-  padding-top: 2%;
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
+.analysis-content {
+  display: grid;
+  gap: clamp(18px, 4vw, 28px);
+  width: min(100%, 1180px);
+  margin: 0 auto;
 }
 
-.info-text {
-  font-size: 1rem;
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 3vw, 24px);
+  align-items: start;
+}
+
+.info-text,
+.selected-file,
+p {
+  max-width: 720px;
+  margin: 0;
   color: #b3b3b3;
-  margin-bottom: 10px;
+  font-size: 1rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .info-link {
   color: #1db954;
-  text-decoration: none;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .info-link:hover {
@@ -54,16 +55,22 @@
 }
 
 .upload-btn {
-  background: rgba(0, 0, 0, 0.75);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: 190px;
+  min-height: 48px;
+  padding: 12px 18px;
   color: white;
-  padding: 2vh 5vw;
+  background: rgba(0, 0, 0, 0.75);
+  border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease-in-out;
   font-size: 1rem;
-  margin-top: 10px;
-  border: none;
-  margin-bottom: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: background 0.3s ease-in-out;
 }
 
 .upload-btn:hover {
@@ -72,82 +79,129 @@
 
 .submit-btn {
   background: #1db954;
-  color: white;
-  font-weight: bold;
 }
 
 .submit-btn:hover {
   background: #168f3f;
 }
 
-p {
-  margin-top: 10px;
-  font-size: 0.9rem;
-  color: #b3b3b3;
-}
-
 .spotify-data-info {
-  margin-top: 20px;
-  padding: 15px;
+  width: min(100%, 760px);
+  margin-top: 8px;
+  padding: clamp(16px, 4vw, 22px);
+  text-align: left;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
-  text-align: left;
 }
 
 .spotify-data-info h2 {
-  font-size: 1.2rem;
+  margin: 0 0 12px;
   color: #1db954;
-  margin-bottom: 10px;
+  font-size: clamp(1.15rem, 5vw, 1.35rem);
+  line-height: 1.25;
 }
 
 .spotify-data-info ol {
-  list-style-type: decimal;
+  margin: 0;
   padding-left: 20px;
 }
 
 .spotify-data-info li {
-  font-size: 1rem;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   color: #b3b3b3;
+  font-size: 1rem;
+  line-height: 1.45;
 }
 
 mat-card {
-  // max-width: 700px;
-  width: 80%;
-  padding: 15px;
+  width: 100%;
+  min-width: 0;
+  padding: clamp(14px, 3vw, 20px);
   background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(10px);
   border-radius: 12px;
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease-in-out;
 }
 
 mat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 12px 30px rgba(0, 255, 127, 0.2); /* Glow verde sutil */
+  transform: translateY(-4px);
+  box-shadow: 0px 12px 30px rgba(0, 255, 127, 0.2);
+}
+
+::ng-deep .mat-mdc-card-header-text {
+  width: 100%;
+  min-width: 0;
 }
 
 mat-card-title {
   color: #1db954;
   font-weight: bold;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
 .card-title {
+  margin-bottom: 16px;
   color: white;
-  margin-bottom: 20px;
+  font-size: clamp(1.25rem, 5vw, 1.6rem);
 }
 
-.card-title:hover .track-details mat-card-title {
-  color: #ffffff; /* Blanco para destacar */
+mat-list {
+  display: grid;
+  gap: 8px;
 }
 
-.track-item:hover .track-details mat-card-subtitle {
-  color: #1db954; /* Verde Spotify */
+.track-item {
+  height: auto !important;
+  min-height: 48px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
 }
 
-.track-sub-details{
-  font-size: 1rem;
+.track-item:hover {
+  background: rgba(29, 185, 84, 0.2);
+  transform: translateY(-1px);
+}
+
+.track-info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px 0;
+}
+
+.track-details {
+  min-width: 0;
+  width: 100%;
+  text-align: left;
+}
+
+.track-details mat-card-title {
+  font-size: clamp(0.95rem, 3vw, 1.05rem);
+}
+
+.track-sub-details {
   color: #b3b3b3;
+  font-size: 0.95rem;
+}
+
+.artist-line {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 100px;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.featured-line {
+  margin-bottom: 14px;
+}
+
+.first-artist {
+  color: #1db954;
+  font-size: clamp(1.25rem, 4vw, 1.8rem);
+  font-weight: bold;
+  text-align: left;
 }
 
 .circle-picture {
@@ -157,199 +211,192 @@ mat-card-title {
   object-fit: cover;
 }
 
-.artist-card-title{
-  width: 100%;
-}
-
-::ng-deep.mat-mdc-card-header-text{
-  width: 100%;
-}
-
-.artist-line {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-}
-
-.artist-line:hover .firt-artist {
-  color: #ffffff;
-}
-
-.firt-artist {
-  color: #1db954;
-  font-weight: bold;
-  font-size: 30px;
-  text-align: left;
-}
-
-.artist-name {
-  color: #1db954;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-// -----------------------------------------------
-
-.profile-wrapper {
-  padding-top: 2%;
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.track-info {
-  display: flex;
-  align-items: center; /* Alinea la imagen con el texto */
-  gap: 15px; /* Espacio entre imagen y texto */
-}
-
-/* Estilo de la imagen */
-.track-image {
-  width: auto;
-  max-width: 150px;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Efecto hover en cada canción */
-.track-item:hover {
-  background: rgba(29, 185, 84, 0.2); /* Fondo verde semi-transparente */
-  border-radius: 8px;
-  transform: scale(1.02); /* Pequeño zoom */
-  transition: all 0.3s ease-in-out;
-}
-
-/* Efecto hover en la imagen */
-.track-item:hover .track-image {
-  box-shadow: 0px 0px 15px rgba(29, 185, 84, 0.5); /* Glow verde */
-  transition: box-shadow 0.3s ease-in-out;
-}
-
-/* Cambio de color en el título y subtítulo al hacer hover */
-.track-item:hover .track-details mat-card-title {
-  color: #ffffff; /* Blanco para destacar */
-}
-
-.track-item:hover .track-details mat-card-subtitle {
-  color: #1db954; /* Verde Spotify */
-}
-
 .back-btn {
   width: 100%;
 }
 
-.histogram-container {
-  width: 40%;
-  align-items: center
-}
-
-.container-charts {
-  display: flex;
+.container-charts,
+.artist-container-charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 3vw, 24px);
   width: 100%;
-  align-items: center
+  align-items: stretch;
 }
 
-/* Pantallas grandes → en fila */
-@media (min-width: 768px) {
-  .container-charts {
-    flex-direction: row;
-  }
-  .histogram-container {
-    width: 100%;
-  }
+.artist-container-charts {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 18px;
 }
 
-/* Pantallas pequeñas → uno debajo de otro */
-@media (max-width: 767px) {
-  .container-charts {
-    flex-direction: column;
-  }
-  .histogram-container {
-    width: 100%;
-  }
+.histogram-container,
+.artist-chart-container {
+  min-width: 0;
+  padding: clamp(12px, 3vw, 18px);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+}
+
+.histogram-container h2,
+.artist-chart-container h2 {
+  margin: 0 0 8px;
+  color: white;
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  line-height: 1.25;
 }
 
 .artist-selector-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 14px;
   width: 100%;
 }
 
-.artist-selector-btn {
-  // width: 10%;
-  margin-left: 20px;
+.mi-form-field {
+  width: min(100%, 520px);
 }
 
-::ng-deep .mdc-notched-outline{
+.artist-selector-btn {
+  margin-top: 4px;
+}
+
+.mat-label {
+  color: white;
+}
+
+.input-selector {
+  color: #1db954 !important;
+}
+
+::ng-deep .mdc-notched-outline {
   background: rgba(0, 0, 0, 0.75);
 }
 
-.mi-form-field{
-  width:40%;
+::ng-deep .mdc-text-field__input {
+  caret-color: #1db954 !important;
 }
 
-.mat-label{
-  color:white;
-}
-
-.input-selector{
-  color:#1db954 !important;
-}
-
-::ng-deep .mdc-text-field__input{
-  caret-color:#1db954 !important;
-}
-
-::ng-deep .mat-mdc-select-arrow {
-  color:#1db954
-}
-
+::ng-deep .mat-mdc-select-arrow,
 ::ng-deep .mat-mdc-form-field.mat-focused .mat-mdc-select-arrow {
-  color:#1db954 !important;
-  border-color:#1db954 !important;
+  color: #1db954 !important;
 }
 
-::ng-deep  .mat-mdc-notch-piece{
-  border-color:#1db954 !important;
+::ng-deep .mat-mdc-notch-piece {
+  border-color: #1db954 !important;
 }
 
 ::ng-deep .mat-mdc-autocomplete-panel {
-  color:#1db954 !important;
+  color: #1db954 !important;
   background-color: #121212 !important;
   scrollbar-color: #1db954 #121212;
 }
 
-::ng-deep .mdc-list-item--selected{
+::ng-deep .mdc-list-item--selected {
+  color: #121212 !important;
   background-color: #1db954 !important;
-  color:#121212 !important;
 }
 
-::ng-deep .mdc-list-item:hover .mdc-list-item__primary-text{
- color:#168f3f
+::ng-deep .mdc-list-item:hover .mdc-list-item__primary-text {
+  color: #168f3f;
 }
 
-::ng-deep .mat-mdc-option .mdc-list-item__primary-text{
-  color:#1db954 ;
+::ng-deep .mat-mdc-option .mdc-list-item__primary-text {
+  color: #1db954;
 }
 
-.artist-item{
-  color:#1db954 ;
-  font-size: 1.2rem;
+.artist-analysis-card {
+  width: 100%;
+}
+
+.artist-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+.artist-title {
+  min-width: 0;
+  color: #1db954;
+  font-size: clamp(1.4rem, 6vw, 1.9rem);
+  font-weight: bold;
+  text-align: left;
+  overflow-wrap: anywhere;
 }
 
 .artist-circle-picture {
-  width: 50px;
-  height: 50px;
+  width: 56px;
+  height: 56px;
+  flex: 0 0 auto;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.artist-title {
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.col {
+  min-width: 0;
+  padding: clamp(14px, 3vw, 20px);
+  text-align: center;
+  overflow-wrap: anywhere;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+}
+
+.span-column {
   color: #1db954;
-  font-weight: bold;
-  font-size: 30px;
-  text-align: left;
-  width: 90%;
+}
+
+@media (max-width: 960px) {
+  .summary-grid,
+  .container-charts,
+  .artist-container-charts,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .record-container,
+  .record-container-analyzed {
+    padding-inline: 12px;
+  }
+
+  .upload-btn {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .artist-selector-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .artist-selector-btn {
+    margin-top: 0;
+  }
+
+  .artist-line {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 12px;
+  }
+
+  .first-artist {
+    text-align: center;
+  }
+
+  .track-details {
+    text-align: center;
+  }
+
+  .artist-heading {
+    align-items: center;
+  }
 }

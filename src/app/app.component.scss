@@ -1,7 +1,5 @@
 .container {
-  background-color: #fafafa;
-  // padding: 0 2%;
-
-  @media (max-width: 1450px) {
-  }
+  min-height: calc(100dvh - 72px);
+  overflow-x: hidden;
+  background-color: #121212;
 }

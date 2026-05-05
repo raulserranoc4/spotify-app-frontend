@@ -2,30 +2,24 @@
   <mat-card class="login-card">
     <mat-card-header>
       <mat-card-title>
-        🎵 Bienvenido a <span class="app-name">Wrappify</span>
+        Bienvenido a <span class="app-name">Wrappify</span>
       </mat-card-title>
       <mat-card-subtitle>
-        Conéctate y descubre tu mundo musical.
+        Conectate y descubre tu mundo musical.
       </mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>
       <p>
-        Explora tus playlists, estadísticas y recomendaciones personalizadas al
-        iniciar sesión con tu cuenta de Spotify.
+        Explora tus playlists, estadisticas y recomendaciones personalizadas al
+        iniciar sesion con tu cuenta de Spotify.
       </p>
     </mat-card-content>
 
     <mat-card-actions>
-      <div class="spotify-login-btn-div">
-        <label
-          (click)="loginWithSpotify()"
-          for="fileInput"
-          class="spotify-login-btn"
-        >
-          Iniciar sesión con Spotify</label
-        >
-      </div>
+      <button class="spotify-login-btn" (click)="loginWithSpotify()">
+        Iniciar sesion con Spotify
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

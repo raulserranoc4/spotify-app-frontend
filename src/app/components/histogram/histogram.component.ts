@@ -35,6 +35,7 @@ export class HistogramComponent {
 
   barChartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
       y: {
         beginAtZero: true
