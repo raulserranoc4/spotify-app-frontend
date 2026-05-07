@@ -1,34 +1,50 @@
-<div *ngIf="userProfile" class="profile-container">
-  <div>
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>{{ userProfile.display_name }}</mat-card-title>
-        <mat-card-subtitle>{{ userProfile.email }}</mat-card-subtitle>
-      </mat-card-header>
+<section *ngIf="userProfile" class="profile-container">
+  <div class="profile-shell">
+    <div class="profile-header">
+      <p class="eyebrow">Perfil conectado</p>
+      <h1>{{ userProfile.display_name }}</h1>
+      <p>{{ userProfile.email }}</p>
+    </div>
 
-      <img
-        mat-card-image
-        [src]="userProfile.images?.[0]?.url || 'assets/default-profile.png'"
-        alt="Foto de perfil"
-      />
+    <mat-card class="profile-card">
+      <div class="profile-identity">
+        <img
+          mat-card-image
+          [src]="userProfile.images?.[0]?.url || 'assets/default-profile.png'"
+          alt="Foto de perfil"
+        />
+
+        <div class="profile-copy">
+          <span class="profile-label">Cuenta Spotify</span>
+          <h2>{{ userProfile.display_name }}</h2>
+          <a
+            [href]="userProfile.external_urls.spotify"
+            class="spotify-link"
+            target="_blank"
+            rel="noopener"
+          >
+            Abrir perfil
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </div>
+      </div>
 
       <mat-card-content>
-        <a
-          [href]="userProfile.external_urls.spotify"
-          class="link-profile"
-          target="_blank"
-          rel="noopener"
-        >
-          <p>
-            <strong>
-              Perfil Spotify
-              <mat-icon>open_in_new</mat-icon>
-            </strong>
-          </p>
-        </a>
-        <p><strong>Pais:</strong> {{ userProfile.country }}</p>
-        <p><strong>Tipo de cuenta:</strong> {{ userProfile.product }}</p>
+        <div class="profile-stats">
+          <div class="profile-stat profile-stat-country">
+            <span>Pais</span>
+            <strong>{{ userProfile.country }}</strong>
+          </div>
+          <div class="profile-stat profile-stat-account">
+            <span>Tipo de cuenta</span>
+            <strong>{{ userProfile.product }}</strong>
+          </div>
+          <div class="profile-stat profile-stat-email">
+            <span>Email</span>
+            <strong>{{ userProfile.email }}</strong>
+          </div>
+        </div>
       </mat-card-content>
     </mat-card>
   </div>
-</div>
+</section>

@@ -1,6 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap");
-
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   width: 100%;
   min-height: 72px;
   display: flex;
@@ -8,21 +9,24 @@
   justify-content: space-between;
   gap: 16px;
   padding: 12px clamp(16px, 4vw, 48px);
-  box-sizing: border-box;
-  background: linear-gradient(-45deg, #1db954, #1ed760, black);
-  background-size: 300% 300%;
-  animation: gradientMove 5s infinite alternate;
+  color: #f7f8fa;
+  background: rgba(15, 17, 21, 0.88);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.28);
 }
 
 .spotify-title {
   min-width: 0;
-  color: #1db954;
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  font-size: clamp(28px, 6vw, 40px);
-  font-weight: 700;
+  color: #f7f8fa;
+  font-size: clamp(1.55rem, 5vw, 2.1rem);
+  font-weight: 900;
   line-height: 1;
-  text-align: left;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0;
+}
+
+.spotify-title::first-letter {
+  color: #1ed760;
 }
 
 .header-actions {
@@ -39,27 +43,30 @@
   justify-content: center;
   gap: 8px;
   min-height: 44px;
-  padding: 10px 12px;
-  color: white;
-  background: transparent;
-  border: none;
-  border-radius: 8px;
+  padding: 10px 14px;
+  color: #f7f8fa;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
   cursor: pointer;
+  font-weight: 800;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 
   mat-icon {
-    width: 24px;
-    height: 24px;
-    color: white;
-    font-size: 24px;
+    width: 22px;
+    height: 22px;
+    color: #1ed760;
+    font-size: 22px;
   }
 
   span {
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 0.95rem;
   }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(30, 215, 96, 0.1);
+    border-color: rgba(30, 215, 96, 0.5);
+    transform: translateY(-1px);
   }
 }
 
@@ -67,9 +74,10 @@
   width: clamp(40px, 8vw, 50px);
   height: clamp(40px, 8vw, 50px);
   flex: 0 0 auto;
-  border-radius: 50%;
+  border: 1px solid rgba(30, 215, 96, 0.45);
+  border-radius: 16px;
   object-fit: cover;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 420px) {

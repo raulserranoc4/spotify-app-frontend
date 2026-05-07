@@ -1,127 +1,179 @@
 .track-container {
   min-height: calc(100dvh - 120px);
-  padding: clamp(18px, 4vw, 36px);
-  background: linear-gradient(to right, #121212, #1e1e1e);
+  padding: clamp(20px, 5vw, 48px);
+  color: #f7f8fa;
+  background:
+    radial-gradient(circle at top left, rgba(30, 215, 96, 0.18), transparent 34rem),
+    linear-gradient(135deg, #0b0d11 0%, #0f1115 45%, #151a20 100%);
 }
 
-.profile-wrapper {
+.track-shell {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 520px));
-  gap: clamp(16px, 3vw, 24px);
-  justify-content: center;
+  gap: clamp(20px, 4vw, 32px);
+  width: min(100%, 1180px);
+  margin: 0 auto;
 }
 
-mat-card {
-  width: 100%;
-  min-width: 0;
-  padding: clamp(14px, 3vw, 20px);
-  background: rgba(0, 0, 0, 0.75);
-  border-radius: 12px;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease-in-out;
-}
-
-mat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 12px 30px rgba(0, 255, 127, 0.2);
-}
-
-mat-card-title {
-  color: #1db954;
-  font-size: clamp(1rem, 4vw, 1.15rem);
-  font-weight: bold;
-  line-height: 1.25;
-  overflow-wrap: anywhere;
-}
-
-mat-card-subtitle {
-  color: #b3b3b3;
-  font-size: 0.95rem;
-  line-height: 1.25;
-  overflow-wrap: anywhere;
-}
-
-mat-list {
-  display: grid;
-  gap: 8px;
-}
-
-.track-item {
-  height: auto !important;
-  min-height: 76px;
-  margin-bottom: 0;
-  border-radius: 8px;
-  transition: all 0.3s ease-in-out;
-}
-
-.track-info {
-  display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
-  align-items: center;
-  gap: 14px;
-  width: 100%;
-  padding: 8px 0;
-}
-
-.track-image {
-  width: 72px;
-  height: 72px;
-  border-radius: 8px;
-  object-fit: cover;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.track-details {
-  min-width: 0;
+.tracks-header {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
 }
 
-.track-item:hover {
-  background: rgba(29, 185, 84, 0.2);
+.eyebrow {
+  margin: 0 0 8px;
+  color: #1ed760;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tracks-header h1 {
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 7vw, 4rem);
+  line-height: 1.02;
+}
+
+.tracks-header p {
+  max-width: 680px;
+  margin: 0;
+  color: #aeb6c2;
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  min-width: 170px;
+  padding: 12px 18px;
+  color: #07110b;
+  background: #1ed760;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.98rem;
+  font-weight: 900;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.primary-btn:hover {
+  background: #34e779;
   transform: translateY(-1px);
 }
 
-.track-item:hover .track-image {
-  box-shadow: 0px 0px 15px rgba(29, 185, 84, 0.5);
+.tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 3vw, 24px);
+  align-items: start;
 }
 
-.track-item:hover .track-details mat-card-title {
-  color: #ffffff;
+.tracks-card {
+  min-width: 0;
+  padding: clamp(16px, 3vw, 24px);
+  color: #f7f8fa;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
 }
 
-.track-item:hover .track-details mat-card-subtitle {
-  color: #1db954;
+::ng-deep .mat-mdc-card-header-text {
+  width: 100%;
+  min-width: 0;
 }
 
-.btn-container {
-  display: flex;
-  justify-content: center;
-  padding-top: clamp(18px, 4vw, 30px);
+.card-title {
+  color: #f7f8fa;
+  font-size: clamp(1.25rem, 4vw, 1.6rem);
+  font-weight: 900;
 }
 
-.btn-download-image {
-  width: min(100%, 280px);
-  min-height: 48px;
-  padding: 12px 18px;
-  color: white;
-  background: #1db954;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: bold;
-  transition: background 0.3s ease-in-out;
+.track-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 8px;
 }
 
-.btn-download-image:hover {
-  background: #168f3f;
+.track-row {
+  display: grid;
+  grid-template-columns: 42px clamp(58px, 8vw, 74px) minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.025);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.track-row:hover {
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.track-row-featured {
+  background: rgba(30, 215, 96, 0.07);
+  border-color: rgba(30, 215, 96, 0.18);
+}
+
+.rank-number {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  color: #1ed760;
+  background: rgba(30, 215, 96, 0.12);
+  border-radius: 50%;
+  font-weight: 900;
+}
+
+.track-image {
+  width: clamp(58px, 8vw, 74px);
+  height: clamp(58px, 8vw, 74px);
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+}
+
+.track-details {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.track-details h3 {
+  margin: 0;
+  color: #f7f8fa;
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  font-weight: 900;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.track-details p {
+  margin: 0;
+  color: #aeb6c2;
+  font-size: clamp(0.92rem, 1.5vw, 1rem);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 900px) {
-  .profile-wrapper {
-    grid-template-columns: minmax(0, 560px);
+  .tracks-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .tracks-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -130,13 +182,23 @@ mat-list {
     padding-inline: 12px;
   }
 
-  .track-info {
-    grid-template-columns: 58px minmax(0, 1fr);
+  .primary-btn {
+    width: 100%;
+  }
+
+  .track-row {
+    grid-template-columns: 34px 54px minmax(0, 1fr);
     gap: 10px;
+    padding: 8px;
+  }
+
+  .rank-number {
+    width: 32px;
+    height: 32px;
   }
 
   .track-image {
-    width: 58px;
-    height: 58px;
+    width: 54px;
+    height: 54px;
   }
 }

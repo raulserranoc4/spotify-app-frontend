@@ -1,4 +1,20 @@
 <div class="loading-container">
-  <div class="spinner"></div>
-  <p class="loading-text">Cargando<span class="dots"></span></p>
+  <div class="loading-card">
+    <div class="loader-orbit" aria-hidden="true">
+      <div class="loader-core"></div>
+    </div>
+
+    <div class="loading-copy">
+      <p class="loading-kicker">Analizando Spotify</p>
+      <h2>{{ currentMessage }}</h2>
+      <p class="loading-text">
+        Esto puede tardar unos segundos si el historial contiene muchas
+        reproducciones.
+      </p>
+    </div>
+
+    <div class="loading-progress" aria-hidden="true">
+      <span></span>
+    </div>
+  </div>
 </div>

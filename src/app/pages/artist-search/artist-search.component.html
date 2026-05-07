@@ -1,65 +1,76 @@
-<div class="track-container">
-  <div class="profile-wrapper">
-    <mat-card *ngIf="topTracksLastWeek.length > 0" class="top-tracks-card">
-      <mat-card-header>
-        <mat-card-title>Top 10 canciones (ultima semana)</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-list>
-          <mat-list-item
-            *ngFor="let track of topTracksLastWeek"
-            class="track-item"
-          >
-            <div class="track-info">
+<section class="track-container">
+  <div class="track-shell">
+    <div class="tracks-header">
+      <div>
+        <p class="eyebrow">Spotify API</p>
+        <h1>Tus canciones favoritas</h1>
+        <p>
+          Compara tus canciones mas escuchadas de la ultima semana y del ultimo
+          mes.
+        </p>
+      </div>
+
+      <button class="primary-btn" (click)="obtainImage()">
+        Obtener imagen
+      </button>
+    </div>
+
+    <div class="tracks-grid">
+      <mat-card *ngIf="topTracksLastWeek.length > 0" class="tracks-card">
+        <mat-card-header>
+          <mat-card-title class="card-title">
+            Ultima semana
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="track-list">
+            <article
+              *ngFor="let track of topTracksLastWeek; let i = index"
+              class="track-row"
+              [class.track-row-featured]="i === 0"
+            >
+              <div class="rank-number">{{ i + 1 }}</div>
               <img
-                [src]="track.album.images[2]?.url || 'assets/default-track.png'"
+                [src]="track.album.images[1]?.url || track.album.images[2]?.url || 'assets/default-track.png'"
                 alt="Imagen del track"
                 class="track-image"
               />
               <div class="track-details">
-                <mat-card-title>{{ track.name }}</mat-card-title>
-                <mat-card-subtitle>
-                  {{ track.artists[0].name }}
-                </mat-card-subtitle>
+                <h3>{{ track.name }}</h3>
+                <p>{{ track.artists[0].name }}</p>
               </div>
-            </div>
-          </mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
+            </article>
+          </div>
+        </mat-card-content>
+      </mat-card>
 
-    <mat-card *ngIf="topTracksLastMonth.length > 0" class="top-tracks-card">
-      <mat-card-header>
-        <mat-card-title>Top 10 canciones (ultimo mes)</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-list>
-          <mat-list-item
-            *ngFor="let track of topTracksLastMonth"
-            class="track-item"
-          >
-            <div class="track-info">
+      <mat-card *ngIf="topTracksLastMonth.length > 0" class="tracks-card">
+        <mat-card-header>
+          <mat-card-title class="card-title">
+            Ultimo mes
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="track-list">
+            <article
+              *ngFor="let track of topTracksLastMonth; let i = index"
+              class="track-row"
+              [class.track-row-featured]="i === 0"
+            >
+              <div class="rank-number">{{ i + 1 }}</div>
               <img
-                [src]="track.album.images[2]?.url || 'assets/default-track.png'"
+                [src]="track.album.images[1]?.url || track.album.images[2]?.url || 'assets/default-track.png'"
                 alt="Imagen del track"
                 class="track-image"
               />
               <div class="track-details">
-                <mat-card-title>{{ track.name }}</mat-card-title>
-                <mat-card-subtitle>
-                  {{ track.artists[0].name }}
-                </mat-card-subtitle>
+                <h3>{{ track.name }}</h3>
+                <p>{{ track.artists[0].name }}</p>
               </div>
-            </div>
-          </mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
+            </article>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
-
-  <div class="btn-container">
-    <button class="btn-download-image" (click)="obtainImage()">
-      Obtener imagen
-    </button>
-  </div>
-</div>
+</section>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { ApiService } from '../app/services/api.service';
 import { catchError, map, Observable, of } from 'rxjs';
+import { AuthService } from '../app/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,8 @@ import { catchError, map, Observable, of } from 'rxjs';
 export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
-    private readonly apiService: ApiService
+    private readonly apiService: ApiService,
+    private readonly authService: AuthService
   ) {}
 
   canActivate(): Observable<boolean> {
@@ -17,6 +19,11 @@ export class AuthGuard implements CanActivate {
     console.log('holaToken: ', token);
 
     if (!token) {
+      if (this.authService.isGuestMode()) {
+        this.router.navigate(['/historial']);
+        return of(false);
+      }
+
       this.router.navigate(['/login']);
       return of(false); // devuelve un observable que emite "false"
     }

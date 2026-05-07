@@ -1,6 +1,8 @@
 <div class="chart-wrapper">
   <canvas
     baseChart
+    [style.width.px]="chartWidth"
+    height="360"
     [datasets]="barChartData"
     [labels]="barChartLabels"
     [options]="barChartOptions"

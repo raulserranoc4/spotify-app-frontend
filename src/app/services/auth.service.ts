@@ -9,6 +9,8 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   private tokenKey = 'spotify_auth';
+  private spotifyTokenKey = 'spotify_token';
+  private guestKey = 'wrappify_guest';
 
   private apiUrl = 'http://localhost:3000/spotify-auth';
 
@@ -29,11 +31,26 @@ export class AuthService {
   // Eliminar el token (logout)
   clearToken(): void {
     localStorage.removeItem(this.tokenKey);
+    localStorage.removeItem(this.spotifyTokenKey);
   }
 
   // Verificar si hay un token guardado
   isAuthenticated(): boolean {
-    return this.getToken() !== null;
+    return this.getToken() !== null || localStorage.getItem(this.spotifyTokenKey) !== null;
+  }
+
+  public enterAsGuest() {
+    this.clearToken();
+    localStorage.setItem(this.guestKey, 'true');
+    this.userImageSource.next(null);
+  }
+
+  public isGuestMode() {
+    return localStorage.getItem(this.guestKey) === 'true';
+  }
+
+  public clearGuestMode() {
+    localStorage.removeItem(this.guestKey);
   }
 
   async isTokenValid(): Promise<boolean> {
@@ -55,13 +72,19 @@ export class AuthService {
   }
 
   public logout() {
-    localStorage.removeItem('spotify_token');
+    const shouldLogoutFromSpotify = !this.isGuestMode() && this.isAuthenticated();
 
-    window.open(
-      'https://accounts.spotify.com/logout',
-      '_blank',
-      'width=500,height=500'
-    );
+    this.clearToken();
+    this.clearGuestMode();
+    this.userImageSource.next(null);
+
+    if (shouldLogoutFromSpotify) {
+      window.open(
+        'https://accounts.spotify.com/logout',
+        '_blank',
+        'width=500,height=500'
+      );
+    }
   }
 
   public callback(code: string): Observable<any> {

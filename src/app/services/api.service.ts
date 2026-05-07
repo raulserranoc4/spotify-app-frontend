@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {
+  ArtistAnalysis,
+  RecordInfoDto,
+} from '../pages/file-uploader/dto/analysis.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -64,16 +68,16 @@ export class ApiService {
     );
   }
 
-  public sendFile(formData: FormData): Observable<any> {
+  public sendFile(formData: FormData): Observable<RecordInfoDto> {
     const token = localStorage.getItem('spotify_token');
-    return this.http.post(`${this.recordAnalysisApiUrl}/upload`, formData, {
+    return this.http.post<RecordInfoDto>(`${this.recordAnalysisApiUrl}/upload`, formData, {
       headers: new HttpHeaders({ Authorization: `${token}` }),
     });
   }
 
-  public analyzeArtist(formData: FormData): Observable<any> {
+  public analyzeArtist(formData: FormData): Observable<ArtistAnalysis> {
     const token = localStorage.getItem('spotify_token');
-    return this.http.post(`${this.recordAnalysisApiUrl}/analyze-artist`, formData, {
+    return this.http.post<ArtistAnalysis>(`${this.recordAnalysisApiUrl}/analyze-artist`, formData, {
       headers: new HttpHeaders({ Authorization: `${token}` }),
     });
   }

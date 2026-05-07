@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -24,6 +23,7 @@ export class CallbackComponent implements OnInit {
       if (code) {
         this.authService.callback(code).subscribe(
           (response) => {
+            this.authService.clearGuestMode();
             localStorage.setItem('spotify_token', response.access_token); // Guardar token
             this.router.navigate(['/home']); // Redirigir a Home
           },

@@ -13,7 +13,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { map, Observable, startWith } from 'rxjs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
-import { Artist, ArtistAnalysis } from './dto/analysis.dto';
+import {
+  Artist,
+  ArtistAnalysis,
+  DisplayRecordArtist,
+  DisplayRecordTrack,
+  RecordArtist,
+  RecordInfoDto,
+  RecordTrack,
+  TimeDuration,
+  TrackMonth,
+  TrackYear,
+} from './dto/analysis.dto';
 
 @Component({
   selector: 'app-file-uploader',
@@ -27,19 +38,20 @@ export class FileUploaderComponent {
 
   public selectedFile: File | null = null;
   public isSelectFilePage: boolean = true;
-  public recordInfo: any;
-  public artists: any[] = [];
-  public tracks: any[] = [];
-  public firstArtist: any;
-  public firstTrack: any;
-  public histogramYearsData: { trackYear: string; time: number }[] = [];
-  public doughnutMonthData: { trackMonth: string; time: number }[] = [];
+  public recordInfo: RecordInfoDto | null = null;
+  public artists: RecordArtist[] = [];
+  public tracks: RecordTrack[] = [];
+  public firstArtist!: DisplayRecordArtist;
+  public firstTrack!: DisplayRecordTrack;
+  public histogramYearsData: TrackYear[] = [];
+  public doughnutMonthData: TrackMonth[] = [];
   public selectedArtist: string = "";
   public totalArtists: Artist[] = [];
   public filteredOptions!: Observable<Artist[]>;
   public myControl = new FormControl('');
   public artistAnalysis: ArtistAnalysis | null = null;
   public isLoadingArtist: boolean = false;  
+  public errorMessage: string | null = null;
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -75,7 +87,7 @@ export class FileUploaderComponent {
 
   public uploadFile() {
     if (!this.selectedFile) {
-      alert('Selecciona un archivo antes de subir.');
+      this.showError('Selecciona un archivo ZIP antes de analizar tu historial.');
       return;
     }
 
@@ -85,18 +97,16 @@ export class FileUploaderComponent {
     formData.append('file', this.selectedFile, this.selectedFile.name);
 
     this.apiService.sendFile(formData).subscribe({
-      next: (response) => {
+      next: (response: RecordInfoDto) => {
         console.log('Archivo subido con éxito', response);
         this.recordInfo = response;
-        this.artists = this.recordInfo.artists.slice(1);
-        this.tracks = this.recordInfo.tracks.slice(1);
-        this.firstArtist = this.recordInfo.artists[0];
-        this.firstArtist.time = this.convertSeconds(this.firstArtist.time);
-        this.firstTrack = this.recordInfo.tracks[0];
-        this.firstTrack.time = this.convertSeconds(this.firstTrack.time);
-        this.histogramYearsData = this.recordInfo.yearsInfo;
-        this.doughnutMonthData = this.recordInfo.monthsInfo;
-        this.totalArtists = this.recordInfo.totalArtists;
+        this.artists = response.artists.slice(1);
+        this.tracks = response.tracks.slice(1);
+        this.firstArtist = this.toDisplayArtist(response.artists[0]);
+        this.firstTrack = this.toDisplayTrack(response.tracks[0]);
+        this.histogramYearsData = response.yearsInfo;
+        this.doughnutMonthData = response.monthsInfo;
+        this.totalArtists = response.totalArtists;
       },
       error: (error: HttpErrorResponse) => {
         console.error('Error al subir el archivo', error);
@@ -109,14 +119,29 @@ export class FileUploaderComponent {
 
   public goToUploadFile() {
     this.isSelectFilePage = true;
+    this.clearError();
   }
 
-  public convertSeconds(totalSeconds: number) {
+  public convertSeconds(totalSeconds: number): TimeDuration {
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = (totalSeconds % 60).toFixed(0);
 
     return { hours, minutes, seconds };
+  }
+
+  private toDisplayArtist(artist: RecordArtist): DisplayRecordArtist {
+    return {
+      ...artist,
+      time: this.convertSeconds(artist.time),
+    };
+  }
+
+  private toDisplayTrack(track: RecordTrack): DisplayRecordTrack {
+    return {
+      ...track,
+      time: this.convertSeconds(track.time),
+    };
   }
 
   public analyzeArtist() {
@@ -125,7 +150,7 @@ export class FileUploaderComponent {
     this.isLoadingArtist = true;
 
     if (!this.selectedFile) {
-      alert('Selecciona un archivo antes de subir.');
+      this.showError('Selecciona un archivo ZIP antes de analizar un artista.');
       this.isLoadingArtist = false;
       return;
     }
@@ -133,8 +158,9 @@ export class FileUploaderComponent {
     const artist = this.findArtistByName(this.myControl.value);
 
     if(!artist.artistName){
-      alert('Artista no encontrado en el registro.');
+      this.showError('No hemos encontrado ese artista en el historial subido.');
       this.isLoadingArtist = false;
+      return;
     }
 
     
@@ -166,5 +192,13 @@ export class FileUploaderComponent {
       return { artistName: "", trackID: "" };
     }
     return artist;
+  }
+
+  public clearError() {
+    this.errorMessage = null;
+  }
+
+  private showError(message: string) {
+    this.errorMessage = message;
   }
 }

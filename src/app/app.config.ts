@@ -11,16 +11,16 @@ import { HomeComponent } from './pages/home/home.component';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthGuard } from '../auth/auth.guard';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { FileUploaderComponent } from './pages/file-uploader/file-uploader.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'callback', component: CallbackComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  // { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  // { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  // { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'historial', component: FileUploaderComponent },
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login' },
 ];
 
 export const appConfig: ApplicationConfig = {

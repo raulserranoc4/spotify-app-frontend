@@ -19,3 +19,56 @@ img,
 canvas {
   max-width: 100%;
 }
+
+.mi-form-field {
+  --mdc-outlined-text-field-input-text-color: #f7f8fa;
+  --mdc-outlined-text-field-caret-color: #1ed760;
+  --mdc-outlined-text-field-focus-label-text-color: #f7f8fa;
+}
+
+input.input-selector,
+input.input-selector.mat-mdc-input-element,
+.mi-form-field input.mat-mdc-input-element {
+  color: #f7f8fa !important;
+  -webkit-text-fill-color: #f7f8fa !important;
+  caret-color: #1ed760 !important;
+  opacity: 1 !important;
+}
+
+input.input-selector::placeholder {
+  color: #9aa3af !important;
+  -webkit-text-fill-color: #9aa3af !important;
+}
+
+.artist-autocomplete-panel.mat-mdc-autocomplete-panel {
+  margin-top: 6px;
+  padding: 8px;
+  background: linear-gradient(180deg, #151a22, #0f131a) !important;
+  border: 1px solid rgba(30, 215, 96, 0.28);
+  border-radius: 12px !important;
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45);
+}
+
+.artist-autocomplete-panel .mat-mdc-option {
+  min-height: 48px;
+  border-radius: 8px;
+}
+
+.artist-autocomplete-panel .mat-mdc-option .mdc-list-item__primary-text {
+  color: #dfe6ee !important;
+  font-weight: 700;
+}
+
+.artist-autocomplete-panel .mat-mdc-option:hover,
+.artist-autocomplete-panel .mat-mdc-option.mdc-list-item--selected {
+  background: rgba(30, 215, 96, 0.14) !important;
+}
+
+.artist-autocomplete-panel .mat-mdc-option:hover .mdc-list-item__primary-text,
+.artist-autocomplete-panel .mat-mdc-option.mdc-list-item--selected .mdc-list-item__primary-text {
+  color: #f7f8fa !important;
+}
+
+.artist-analysis-card .mat-mdc-card-header {
+  margin-bottom: 18px;
+}

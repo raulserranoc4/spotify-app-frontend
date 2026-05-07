@@ -1,25 +1,45 @@
-<div class="login-container">
-  <mat-card class="login-card">
-    <mat-card-header>
-      <mat-card-title>
-        Bienvenido a <span class="app-name">Wrappify</span>
-      </mat-card-title>
-      <mat-card-subtitle>
-        Conectate y descubre tu mundo musical.
-      </mat-card-subtitle>
-    </mat-card-header>
-
-    <mat-card-content>
+<section class="login-container">
+  <div class="login-shell">
+    <div class="login-copy">
+      <p class="eyebrow">Wrappify</p>
+      <h1>Tu Spotify convertido en historias visuales</h1>
       <p>
-        Explora tus playlists, estadisticas y recomendaciones personalizadas al
-        iniciar sesion con tu cuenta de Spotify.
+        Conecta tu cuenta para ver tus canciones recientes, tu perfil y tus
+        resumenes musicales con una experiencia clara y cuidada.
       </p>
-    </mat-card-content>
+    </div>
 
-    <mat-card-actions>
-      <button class="spotify-login-btn" (click)="loginWithSpotify()">
-        Iniciar sesion con Spotify
-      </button>
-    </mat-card-actions>
-  </mat-card>
-</div>
+    <mat-card class="login-card">
+      <mat-card-header>
+        <mat-card-title>Bienvenido</mat-card-title>
+        <mat-card-subtitle>
+          Inicia sesion para empezar a explorar tu musica.
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="login-feature">
+          <span></span>
+          <p>Perfil de usuario</p>
+        </div>
+        <div class="login-feature">
+          <span></span>
+          <p>Top canciones</p>
+        </div>
+        <div class="login-feature">
+          <span></span>
+          <p>Analisis de historial</p>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button class="spotify-login-btn" (click)="loginWithSpotify()">
+          Iniciar sesion con Spotify
+        </button>
+        <button class="guest-login-btn" (click)="enterAsGuest()">
+          Entrar como invitado
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section>

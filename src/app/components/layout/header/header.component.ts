@@ -15,6 +15,10 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent {
   constructor(private router: Router, private authService: AuthService) {}
 
+  get showSessionActions() {
+    return !['/login', '/callback'].some((path) => this.router.url.startsWith(path));
+  }
+
   public logout() {
     this.authService.logout();
 
