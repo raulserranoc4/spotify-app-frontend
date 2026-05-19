@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 import {
   ArtistAnalysis,
   RecordInfoDto,
@@ -10,9 +11,9 @@ import {
   providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:3000';
-  private spotifyApiUrl = 'http://localhost:3000/spotify';
-  private recordAnalysisApiUrl = 'http://localhost:3000/record-analysis';
+  private apiUrl = environment.apiUrl;
+  private spotifyApiUrl = `${environment.apiUrl}/spotify`;
+  private recordAnalysisApiUrl = `${environment.apiUrl}/record-analysis`;
 
   constructor(private http: HttpClient) {}
 
