@@ -1,8 +1,13 @@
-<div class="chart-wrapper">
+<div
+  class="chart-wrapper"
+  [class.monthly-chart-wrapper]="isMonthlyChart"
+>
   <canvas
     baseChart
-    [style.width.px]="chartWidth"
-    height="360"
+    [class.monthly-chart]="isMonthlyChart"
+    [width]="chartWidth"
+    [style.width]="chartStyleWidth"
+    [height]="chartHeight"
     [datasets]="barChartData"
     [labels]="barChartLabels"
     [options]="barChartOptions"

@@ -224,6 +224,7 @@ mat-card,
   background: rgba(30, 215, 96, 0.08);
 }
 
+
 .spotify-data-info {
   padding: clamp(20px, 4vw, 28px);
   border-radius: 18px;
@@ -289,8 +290,9 @@ mat-card {
   color: var(--text);
   font-size: clamp(1.25rem, 3vw, 1.6rem);
   font-weight: 900;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
+
 
 .featured-result {
   display: grid;
@@ -554,23 +556,21 @@ mat-card {
     padding-inline: 12px;
   }
 
-  .file-picker,
-  .featured-result {
+  .ranking-card { min-height: 100vh; }
+
+  .file-picker {
     grid-template-columns: 1fr;
-    justify-items: start;
   }
 
-  .featured-picture {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1;
-  }
+  .featured-result { grid-template-columns: minmax(0, 1fr) 68px; }
+  .featured-picture { width: 68px; height: 68px; }
 
   .primary-btn,
   .secondary-btn,
   .mi-form-field {
     width: 100%;
   }
+
 
   .artist-selector-container {
     flex-direction: column;

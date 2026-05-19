@@ -104,17 +104,12 @@ mat-card-content {
   cursor: pointer;
   font-size: 1rem;
   font-weight: 900;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: background 160ms ease, transform 140ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .spotify-login-btn {
   color: #07110b;
   background-color: #1ed760;
-}
-
-.spotify-login-btn:hover {
-  background: #34e779;
-  transform: translateY(-1px);
 }
 
 .guest-login-btn {
@@ -124,9 +119,27 @@ mat-card-content {
   border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
-.guest-login-btn:hover {
-  background: rgba(30, 215, 96, 0.12);
-  transform: translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+  .spotify-login-btn:hover {
+    background: #34e779;
+    transform: translateY(-1px);
+  }
+
+  .guest-login-btn:hover {
+    background: rgba(30, 215, 96, 0.12);
+    transform: translateY(-1px);
+  }
+}
+
+.spotify-login-btn:active,
+.guest-login-btn:active {
+  transform: scale(0.97);
+}
+
+.spotify-login-btn:focus-visible,
+.guest-login-btn:focus-visible {
+  outline: 2px solid rgba(30, 215, 96, 0.75);
+  outline-offset: 3px;
 }
 
 @media (max-width: 840px) {

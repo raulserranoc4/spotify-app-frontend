@@ -38,13 +38,13 @@
   border-radius: 50%;
   border: 3px solid transparent;
   border-top-color: #1ed760;
-  animation: spin 1.4s linear infinite;
+  animation: spin 900ms linear infinite;
 }
 
 .loader-orbit::after {
   inset: 20px;
   border-top-color: #7aa7ff;
-  animation-duration: 1.9s;
+  animation-duration: 1.2s;
   animation-direction: reverse;
 }
 
@@ -100,7 +100,7 @@
   height: 100%;
   background: linear-gradient(90deg, #1ed760, #7aa7ff);
   border-radius: inherit;
-  animation: progress 1.8s ease-in-out infinite;
+  animation: progress 1.1s linear infinite;
 }
 
 @keyframes spin {

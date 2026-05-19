@@ -15,7 +15,7 @@
   border: 6px solid rgba(255, 255, 255, 0.2);
   border-top: 6px solid #1db954;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: spin 800ms linear infinite;
   margin-bottom: 20px;
 }
 
@@ -27,7 +27,7 @@
 
 .dots::after {
   content: "";
-  animation: dots 1.5s infinite steps(4);
+  animation: dots 900ms infinite steps(4);
 }
 
 @keyframes spin {

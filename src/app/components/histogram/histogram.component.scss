@@ -8,15 +8,29 @@
   scrollbar-color: #1ed760 #11161e;
 }
 
+.monthly-chart-wrapper {
+  min-height: 440px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 canvas {
   display: block;
   min-width: 640px;
   max-height: 390px;
 }
 
+.monthly-chart {
+  max-height: 540px;
+}
+
+.monthly-chart { min-width: 0; max-width: 100%; }
+
 @media (max-width: 600px) {
   .chart-wrapper {
     min-height: 340px;
     margin: 0.5rem auto;
   }
+
+  .monthly-chart-wrapper { min-height: 440px; }
 }

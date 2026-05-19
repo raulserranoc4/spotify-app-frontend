@@ -118,7 +118,7 @@ export interface RecordInfoDto {
 
 export interface ArtistAnalysis {
   artistName: string;
-  artistImage: string;
+  artistImage?: string | null;
   minutesListened: string;
   topTracks: RecordTrack[];
   firstTrack: RecordTrack | string;

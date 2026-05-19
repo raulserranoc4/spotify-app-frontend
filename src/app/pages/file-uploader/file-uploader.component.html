@@ -105,10 +105,20 @@
 
     <div class="summary-grid">
       <mat-card class="ranking-card">
-        <mat-card-header>
+        <mat-card-header class="ranking-card-header" style="margin-bottom: 8px;">
           <mat-card-title class="card-title">
             Artistas mas escuchados
           </mat-card-title>
+          <button
+            class="secondary-btn"
+            type="button"
+            (click)="obtainArtistsImage()"
+            aria-label="Descargar imagen de artistas"
+            title="Descargar imagen"
+            style="width: 36px; min-width: 36px; height: 36px; padding: 0; border-radius: 50%; color: var(--green);"
+          >
+            <mat-icon aria-hidden="true">download</mat-icon>
+          </button>
         </mat-card-header>
         <mat-card-content>
           <div class="featured-result">
@@ -122,7 +132,8 @@
               </p>
             </div>
             <img
-              [src]="firstArtist.images?.[0]?.url || 'assets/default-profile.png'"
+              [src]="getArtistImage(firstArtist)"
+              (error)="useArtistFallbackImage($event, firstArtist.name || firstArtist.artistName)"
               alt="Foto del artista"
               class="featured-picture"
             />
@@ -144,10 +155,20 @@
       </mat-card>
 
       <mat-card class="ranking-card">
-        <mat-card-header>
+        <mat-card-header class="ranking-card-header" style="margin-bottom: 8px;">
           <mat-card-title class="card-title">
             Canciones mas escuchadas
           </mat-card-title>
+          <button
+            class="secondary-btn"
+            type="button"
+            (click)="obtainTracksImage()"
+            aria-label="Descargar imagen de canciones"
+            title="Descargar imagen"
+            style="width: 36px; min-width: 36px; height: 36px; padding: 0; border-radius: 50%; color: var(--green);"
+          >
+            <mat-icon aria-hidden="true">download</mat-icon>
+          </button>
         </mat-card-header>
         <mat-card-content>
           <div class="featured-result">
@@ -160,7 +181,8 @@
               </p>
             </div>
             <img
-              [src]="firstTrack.album?.images?.[1]?.url || 'assets/default-track.png'"
+              [src]="getTrackImage(firstTrack)"
+              (error)="useTrackFallbackImage($event)"
               alt="Portada del album"
               class="featured-picture"
             />
@@ -246,7 +268,8 @@
         <mat-card-title class="artist-heading">
           <span>{{ artistAnalysis.artistName }}</span>
           <img
-            [src]="artistAnalysis.artistImage"
+            [src]="getArtistAnalysisImage(artistAnalysis)"
+            (error)="useArtistFallbackImage($event, artistAnalysis.artistName)"
             alt="Foto del artista"
             class="artist-circle-picture"
           />
@@ -274,7 +297,10 @@
               <p class="section-kicker">Artista seleccionado</p>
               <h2>Evolución de escuchas</h2>
             </div>
-            <app-histogram [rawData]="artistAnalysis.artistByYears"></app-histogram>
+            <app-histogram
+              [rawData]="artistAnalysis.artistByYears"
+              [groupMonthlyLabels]="true"
+            ></app-histogram>
           </div>
         </div>
       </mat-card-content>
